@@ -1,0 +1,70 @@
+{
+  "format": "landscape",
+  "theme": "studio",
+  "scenes": [
+    {
+      "name": "Hook",
+      "template": "TitleCard",
+      "seconds": 4,
+      "props": {
+        "kicker": "Topic",
+        "title": "A question the viewer already has",
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Problem",
+      "template": "KineticText",
+      "seconds": 4,
+      "props": {
+        "lines": ["State the problem.", "Make it concrete."],
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Context",
+      "template": "TitleCard",
+      "seconds": 4,
+      "props": {
+        "title": "Why this matters now",
+        "subtitle": "One sentence of context."
+      }
+    },
+    {
+      "name": "Evidence",
+      "template": "MetricCard",
+      "seconds": 4.5,
+      "props": {
+        "label": "The key number",
+        "value": 100,
+        "context": "What the number means.",
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Explanation",
+      "template": "BarChart",
+      "seconds": 5,
+      "props": {
+        "title": "The comparison that explains it",
+        "data": [
+          { "label": "A", "value": 10 },
+          { "label": "B", "value": 25, "highlight": true }
+        ],
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Solution",
+      "template": "KineticText",
+      "seconds": 4,
+      "props": { "lines": ["The answer, in five words."], "emphasis": [] }
+    },
+    {
+      "name": "Payoff",
+      "template": "LogoReveal",
+      "seconds": 3.5,
+      "props": { "wordmark": "Brand", "tagline": "The takeaway line." }
+    }
+  ]
+}

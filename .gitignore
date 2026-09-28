@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+.env
+
+# Render outputs — never commit rendered media by default
+out/
+projects/*/exports/
+projects/*/review/
+
+# Local tool downloads (whisper.cpp builds, models, etc.)
+.cache/
+whisper.cpp/
+
+# Official Remotion agent skills are installed, not vendored (pinned in
+# skills-lock.json). Restore with: npm run skills
+.claude/skills/remotion-*/

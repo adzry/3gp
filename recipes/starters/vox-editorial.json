@@ -1,0 +1,65 @@
+{
+  "format": "landscape",
+  "theme": "vox-editorial",
+  "scenes": [
+    {
+      "name": "Question",
+      "template": "TitleCard",
+      "seconds": 4.5,
+      "props": {
+        "kicker": "Explained",
+        "title": "Why does this thing work the way it does?",
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Visual evidence",
+      "template": "LowerThird",
+      "seconds": 4,
+      "props": {
+        "name": "Exhibit A",
+        "role": "Archival image / document (add background)"
+      }
+    },
+    {
+      "name": "Annotation",
+      "template": "MetricCard",
+      "seconds": 4.5,
+      "props": {
+        "label": "The detail that matters",
+        "value": 1,
+        "annotate": true,
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Data",
+      "template": "BarChart",
+      "seconds": 5.5,
+      "props": {
+        "title": "The pattern in the data",
+        "data": [
+          { "label": "Then", "value": 10 },
+          { "label": "Now", "value": 40, "highlight": true }
+        ],
+        "annotation": "the turn",
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Explanation",
+      "template": "KineticText",
+      "seconds": 4.5,
+      "props": {
+        "lines": ["Because of one mechanism.", "Stated plainly."],
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Conclusion",
+      "template": "TitleCard",
+      "seconds": 5,
+      "props": { "title": "The thesis, held on screen", "emphasis": [] }
+    }
+  ]
+}

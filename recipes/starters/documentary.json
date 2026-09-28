@@ -1,0 +1,69 @@
+{
+  "format": "landscape",
+  "theme": "vox-editorial",
+  "scenes": [
+    {
+      "name": "Cold open",
+      "template": "KineticText",
+      "seconds": 4,
+      "props": {
+        "lines": ["A striking moment.", "No context yet."],
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Context",
+      "template": "TitleCard",
+      "seconds": 4.5,
+      "props": {
+        "kicker": "Place · Year",
+        "title": "Where and when this happens"
+      }
+    },
+    {
+      "name": "Character",
+      "template": "LowerThird",
+      "seconds": 4,
+      "props": { "name": "Person Name", "role": "Who they are" }
+    },
+    {
+      "name": "Conflict",
+      "template": "QuoteCard",
+      "seconds": 5,
+      "props": {
+        "quote": "A real, attributed quote that states the tension.",
+        "author": "REPLACE",
+        "source": "REPLACE"
+      }
+    },
+    {
+      "name": "Evidence",
+      "template": "MetricCard",
+      "seconds": 4.5,
+      "props": {
+        "label": "What changed",
+        "value": 100,
+        "annotate": true,
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Turning point",
+      "template": "KineticText",
+      "seconds": 4,
+      "props": {
+        "lines": ["Then everything changed."],
+        "emphasis": ["changed"]
+      }
+    },
+    {
+      "name": "Resolution",
+      "template": "TitleCard",
+      "seconds": 5,
+      "props": {
+        "title": "Where it stands now",
+        "subtitle": "The closing thought."
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+# Licensing
+
+3gp may be used for commercial output. This file is the rulebook and the
+register. When in doubt: don't ship it, mark it `REQUIRES REVIEW`, ask.
+
+> This is an engineering record, not legal advice.
+
+## Rules
+
+1. **"Free" ≠ commercially unrestricted.** Read the licence at the source for
+   every asset, on the day you use it, and record it.
+2. **Code licences ≠ asset licences.** A template repo being MIT says nothing
+   about the fonts, footage or music inside it.
+3. **No licence = no permission.** Repos without a LICENSE file (e.g.
+   Locomotion, video-editor-plugin) are reference-only: study, don't copy.
+4. **Prefer dependencies over copies.** Install via npm; don't vendor
+   third-party repos. When code or values *are* adapted, credit them in
+   `THIRD_PARTY_NOTICES.md` with the licence text.
+5. **Flag restrictive terms:** NC (non-commercial), ND (no derivatives),
+   SA (share-alike), editorial-only, attribution-required, "no standalone
+   redistribution", trademark/likeness restrictions, platform Content ID.
+6. **Log every asset** in the project's `brief.md` → *Sources & facts*:
+   file, source URL, author, licence, date checked, attribution text.
+7. **Don't redistribute restricted assets.** Rendered videos may include them
+   per licence; the raw files stay out of git unless the licence permits.
+8. **Keep required notices.** Fonts: OFL requires the licence to travel with
+   the font files — `@fontsource` packages include it.
+
+## Remotion licence (verified 2026-09-28, LICENSE.md on main)
+
+- **Free License:** individuals; for-profit organisations with **up to 3
+  employees**; non-profits; evaluation. Commercial video creation allowed.
+- **Company License** required for other for-profit organisations
+  (https://www.remotion.pro/license).
+- Disallowed: copying/modifying Remotion to sell or relicense a derivative
+  of Remotion itself.
+- The LICENSE notes it "will slightly change" in **Remotion 5.0**
+  (remotion-dev/remotion PR 3750) — re-check on upgrade.
+- Covers `remotion`, `@remotion/cli`, and packages declaring "SEE LICENSE IN
+  LICENSE.md" (e.g. `@remotion/three`, `@remotion/lottie`). `@remotion/media`
+  (no field) and `@remotion/transitions` ("UNLICENSED") are treated the same.
+  `@remotion/captions`, `@remotion/fonts`, `@remotion/install-whisper-cpp`
+  declare **MIT**.
+- **Action for the owner:** if 3gp is used by an organisation with more than
+  three employees, buy a Company License.
+
+## Register — what's in this repo
+
+| Item | Kind | Licence | Verified via | Notes |
+|---|---|---|---|---|
+| Remotion + @remotion/* | npm deps | Remotion License / MIT (see above) | LICENSE.md, npm fields | |
+| React, Zod | npm deps | MIT | npm | |
+| Inter, Archivo Black, Caveat, JetBrains Mono | fonts (@fontsource) | SIL OFL 1.1 | google/fonts OFL.txt, npm `license` | Licence files ship in `node_modules/@fontsource/*/LICENSE` |
+| FFmpeg (Remotion's bundled binary) | tool | LGPL-2.1+ (parts GPL) | FFmpeg LICENSE.md | Used as a CLI, not linked into 3gp code |
+| vox-style-animation (adapted) | style ideas, palette, CSS texture approach | MIT | repo LICENSE | Notice in `THIRD_PARTY_NOTICES.md` |
+| Onda (adapted) | motion token values | MIT | repo LICENSE | Notice in `THIRD_PARTY_NOTICES.md` |
+| Remotion Agent Skills | installed, git-ignored | Remotion License (assumed; lives in Remotion monorepo) | package.json repository field | REQUIRES REVIEW if ever vendored |
+| Demo project 001 | own content | — | — | No third-party assets |
+
+## Register — reference-only (no code taken)
+
+| Item | Licence | Why reference-only |
+|---|---|---|
+| Locomotion | none found | No permission to copy |
+| video-editor-plugin | none found | No permission to copy |
+| remotion-video-templates | MIT | Architecture studied; 3gp templates written independently |
+| OpenVideo | MIT | EDL concept only |
+| Official Remotion templates | Remotion License | Patterns only |
+| Motion Canvas (+ examples) | MIT | Not installed |
+
+## Asset providers — terms to verify before first use
+
+Their websites were unreachable from the build environment, so nothing here
+is asserted. Before using any asset, confirm and record:
+
+| Provider | Check |
+|---|---|
+| Pexels | Commercial use? Attribution? Restrictions on identifiable people, brands, standalone resale? |
+| Pixabay | Same, plus music-specific terms and whether tracks are registered with Content ID on YouTube/Facebook |
+| Coverr | Commercial use? Attribution? Any "Coverr Pro"-only clips? |
+| Mixkit | Separate licences per media type (video / music / SFX); some items may be restricted for broadcast or certain uses |
+| Freesound | Licence is **per sound** — CC0, attribution-required and non-commercial variants all exist. Filter by licence; attribute when required |
+| LottieFiles | Per-animation licence; free animations vs. marketplace; redistribution of the `.json` source |
+| Google Fonts | Per family: OFL / Apache 2.0 / UFL — record which |
+
+## Checklist before a commercial release
+
+- [ ] Every asset in `brief.md` has a verified licence + date.
+- [ ] No NC/ND/editorial-only assets in commercial output.
+- [ ] Attributions present where required (description, end card, or credits file).
+- [ ] Music cleared for the target platform (Content ID).
+- [ ] Remotion licence tier correct for the entity publishing.
+- [ ] Real people/brands: rights to likeness and trademarks considered.

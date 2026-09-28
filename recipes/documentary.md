@@ -1,0 +1,22 @@
+# Recipe: Documentary
+
+```
+COLD OPEN → CONTEXT → CHARACTER → CONFLICT → EVIDENCE → TURNING POINT → RESOLUTION
+```
+
+**Use for:** stories about people, places, events, companies. 2–10 min.
+
+| Beat | Job | Suggested template |
+|---|---|---|
+| Cold open | Drop in mid-moment; withhold context | KineticText over footage, or LowerThird with `background` |
+| Context | Where/when; establish stakes | TitleCard with kicker "Place · Year" |
+| Character | Who we follow | LowerThird (over interview footage) |
+| Conflict | The tension, ideally in their words | QuoteCard (real, attributed quotes only) |
+| Evidence | Documents, numbers, archival material | MetricCard (`annotate: true`), BarChart |
+| Turning point | The moment things change | KineticText with one emphasis |
+| Resolution | Where it stands; the thought to leave with | TitleCard, long hold |
+
+**Footage:** documentary leans on real footage. Put clips in
+`public/projects/<project>/` and use `LowerThird.background` today; a
+dedicated footage template is a recommended next step (see README).
+**Ethics:** quotes, names and numbers must be verifiable. Log sources in `brief.md`.

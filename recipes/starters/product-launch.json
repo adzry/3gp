@@ -1,0 +1,69 @@
+{
+  "format": "landscape",
+  "theme": "studio",
+  "scenes": [
+    {
+      "name": "Problem",
+      "template": "KineticText",
+      "seconds": 3.5,
+      "props": {
+        "lines": ["The daily annoyance.", "Everyone has it."],
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Product reveal",
+      "template": "LogoReveal",
+      "seconds": 3.5,
+      "props": { "wordmark": "Product", "tagline": "What it is, in one line." }
+    },
+    {
+      "name": "Feature 1",
+      "template": "TitleCard",
+      "seconds": 3.5,
+      "props": {
+        "kicker": "Feature",
+        "title": "First benefit, not feature name",
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Feature 2",
+      "template": "TitleCard",
+      "seconds": 3.5,
+      "props": {
+        "kicker": "Feature",
+        "title": "Second benefit",
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Proof",
+      "template": "MetricCard",
+      "seconds": 4,
+      "props": {
+        "label": "Proof point",
+        "value": 10,
+        "suffix": "×",
+        "context": "Measured how, by whom.",
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Result",
+      "template": "QuoteCard",
+      "seconds": 4.5,
+      "props": {
+        "quote": "A real customer quote.",
+        "author": "REPLACE",
+        "source": "REPLACE"
+      }
+    },
+    {
+      "name": "CTA",
+      "template": "TitleCard",
+      "seconds": 3.5,
+      "props": { "title": "Try it at example.com", "align": "center" }
+    }
+  ]
+}

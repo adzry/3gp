@@ -1,0 +1,92 @@
+{
+  "$schema": "../../schemas/video.schema.json",
+  "id": "p001-from-3gp-to-3gp",
+  "title": "From 3GP to 3gp",
+  "fps": 30,
+  "format": "landscape",
+  "theme": "vox-editorial",
+  "scenes": [
+    {
+      "name": "Question",
+      "template": "TitleCard",
+      "seconds": 4.5,
+      "props": {
+        "kicker": "Explained",
+        "title": "Before 3gp was a lab, it was a file format",
+        "emphasis": ["file format"]
+      }
+    },
+    {
+      "name": "Context",
+      "template": "KineticText",
+      "seconds": 5,
+      "props": {
+        "lines": [
+          "Phones went 3G.",
+          "Video had to fit in a pocket.",
+          "So it became a .3gp file."
+        ],
+        "emphasis": [".3gp"]
+      }
+    },
+    {
+      "name": "Evidence",
+      "template": "MetricCard",
+      "seconds": 4.5,
+      "props": {
+        "label": "Pixels in a QCIF frame",
+        "value": 25344,
+        "context": "176 × 144 — a common resolution for 3GP video on early camera phones.",
+        "annotate": true,
+        "source": "176 × 144 = 25,344"
+      }
+    },
+    {
+      "name": "Data",
+      "template": "BarChart",
+      "seconds": 6,
+      "props": {
+        "title": "Pixels per frame",
+        "data": [
+          { "label": "QCIF", "value": 25344 },
+          { "label": "480p", "value": 409920 },
+          { "label": "720p", "value": 921600 },
+          { "label": "1080p", "value": 2073600, "highlight": true }
+        ],
+        "annotation": "≈82× QCIF",
+        "source": "width × height (480p taken as 854 × 480)"
+      }
+    },
+    {
+      "name": "Explanation",
+      "template": "KineticText",
+      "seconds": 4.5,
+      "props": {
+        "lines": ["82× the pixels.", "The small name stuck."],
+        "emphasis": ["82×"]
+      }
+    },
+    {
+      "name": "Conclusion",
+      "template": "TitleCard",
+      "seconds": 5,
+      "props": {
+        "title": "Now it's a lab where every video makes the next one faster",
+        "emphasis": ["faster"]
+      }
+    },
+    {
+      "name": "Sign-off",
+      "template": "LogoReveal",
+      "seconds": 3.5,
+      "props": { "wordmark": "3gp", "tagline": "Idea → 3gp → Claude → video" }
+    }
+  ],
+  "variants": [
+    {
+      "id": "p001-from-3gp-to-3gp-vertical",
+      "format": "vertical",
+      "theme": "studio"
+    }
+  ]
+}

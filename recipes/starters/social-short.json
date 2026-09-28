@@ -1,0 +1,56 @@
+{
+  "format": "vertical",
+  "theme": "studio",
+  "scenes": [
+    {
+      "name": "Hook",
+      "template": "KineticText",
+      "seconds": 2,
+      "props": { "lines": ["Stop scrolling."], "size": 170 }
+    },
+    {
+      "name": "Pattern interrupt",
+      "template": "MetricCard",
+      "seconds": 3,
+      "props": {
+        "label": "Surprising fact",
+        "value": 42,
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Value",
+      "template": "KineticText",
+      "seconds": 4,
+      "props": {
+        "lines": ["The one useful idea.", "Said simply."],
+        "emphasis": []
+      }
+    },
+    {
+      "name": "Visual reinforcement",
+      "template": "BarChart",
+      "seconds": 4,
+      "props": {
+        "title": "Show, don't tell",
+        "data": [
+          { "label": "Before", "value": 10 },
+          { "label": "After", "value": 30, "highlight": true }
+        ],
+        "source": "REPLACE with a real source"
+      }
+    },
+    {
+      "name": "Payoff",
+      "template": "TitleCard",
+      "seconds": 3,
+      "props": { "title": "The line they'll repeat", "emphasis": [] }
+    },
+    {
+      "name": "CTA",
+      "template": "LogoReveal",
+      "seconds": 2.5,
+      "props": { "wordmark": "@handle", "tagline": "Follow for part 2" }
+    }
+  ]
+}
