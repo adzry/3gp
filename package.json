@@ -14,10 +14,14 @@
     "stills": "node tools/render.mjs --stills",
     "captions:srt": "node tools/captions/srt-to-json.mjs",
     "media": "node tools/media/media.mjs",
+    "transcribe": "node tools/captions/transcribe.mjs",
+    "transcript": "node tools/captions/transcript.mjs",
+    "fixtures": "node tools/render.mjs fixture-footage --out public/fixtures/placeholder-footage.mp4",
     "typecheck": "tsc",
-    "check": "eslint src projects && tsc && node tools/validate.mjs",
+    "check": "eslint src projects && tsc && node --test \"tests/*.test.mjs\" && node tools/validate.mjs",
     "skills": "npx -y skills add remotion-dev/skills -a claude-code -s '*' -y --copy",
-    "setup": "bash tools/setup.sh"
+    "setup": "bash tools/setup.sh",
+    "test": "node --test \"tests/*.test.mjs\""
   },
   "sideEffects": [
     "*.css"
@@ -38,6 +42,7 @@
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.529",
+    "@remotion/install-whisper-cpp": "4.0.529",
     "@types/react": "19.2.7",
     "@types/web": "0.0.166",
     "eslint": "9.19.0",

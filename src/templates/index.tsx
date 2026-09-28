@@ -2,6 +2,7 @@ import type React from "react";
 import type { TemplateName } from "../video/schema";
 import { BarChart } from "./BarChart";
 import { CaptionedShort } from "./CaptionedShort";
+import { Footage } from "./Footage";
 import { KineticText } from "./KineticText";
 import { LogoReveal } from "./LogoReveal";
 import { LowerThird } from "./LowerThird";
@@ -19,4 +20,5 @@ export const TEMPLATES: Record<TemplateName, React.FC<never>> = {
   BarChart,
   CaptionedShort,
   LogoReveal,
+  Footage,
 };

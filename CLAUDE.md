@@ -8,7 +8,8 @@ Short version: videos are data (`projects/<n>/video.json`) → validate → look
 review stills → render. Prefer changing data over writing animation code.
 
 ## Commands
-- `npm run check` — lint + typecheck + validate. Must pass before committing.
+- `npm run check` — lint + typecheck + tests + validate. Must pass before committing.
+- `npm run transcribe -- <nnn>` / `npm run transcript -- <nnn>` — voice-over → word-timed transcript / listing. Never claim a transcription succeeded unless the command did; never hand-write transcript content.
 - `npm run stills -- <nnn>` — review PNGs per scene. Always look at them.
 - `npm run render -- <nnn>` — final MP4s (only when output is wanted).
 - `npm run studio` — interactive preview for the user.

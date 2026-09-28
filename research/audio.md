@@ -27,7 +27,11 @@ commercial work.
 
 ## Captions
 
-Pipeline and tool status: [`tools/captions/README.md`](../tools/captions/README.md).
+Pipeline, setup and troubleshooting: [`tools/captions/README.md`](../tools/captions/README.md).
+3gp transcribes locally with **whisper.cpp via `@remotion/install-whisper-cpp`**
+(`npm run transcribe`) into its own transcript format, which drives both
+captions and voice-timed scenes. One engine only; the others below are
+documented alternatives, not installed.
 
 | Tool | Licence (verified) | Word timestamps | Notes |
 |---|---|---|---|

@@ -26,7 +26,10 @@ import · `Not used`.
 | `@remotion/transitions` | Library | npm | `TransitionSeries` | npm field "UNLICENSED" → treat as Remotion License | Not used yet (custom `SceneShell`) |
 | `@remotion/three` | Library | npm | React Three Fiber in Remotion | Remotion License | Secondary (install per project) |
 | `@remotion/lottie` | Library | npm | Lottie playback | Remotion License | Secondary |
-| `@remotion/install-whisper-cpp` | Tool | npm | Whisper.cpp install + transcribe → captions | MIT (npm field) | Secondary (recommended next) |
+| `@remotion/install-whisper-cpp` 4.0.529 | Tool | npm | Builds whisper.cpp, downloads models, runs transcription | MIT (npm field) | **Installed** (devDependency, used by `npm run transcribe`) |
+| whisper.cpp 1.5.5 | Transcription engine | https://github.com/ggml-org/whisper.cpp | Local speech-to-text with token timestamps | MIT (LICENSE) | **Core for voice-first** — built into `.cache/whisper.cpp` (git-ignored) |
+| Whisper models (ggml) | Model weights | https://huggingface.co/ggerganov/whisper.cpp | base.en default | MIT — "Whisper's code and model weights are released under the MIT License" (openai/whisper README, verified 2026-09-28) | External download to `.cache/whisper-models` |
+| faster-whisper / openai-whisper | Transcription engines | GitHub | Python alternatives | MIT | Not used (one engine at a time) |
 | Motion Canvas 3.17.2 | Engine | https://github.com/motion-canvas/motion-canvas | Generator-based vector animation | MIT (LICENSE) | Secondary — see [engines.md](engines.md) |
 | HyperFrames | Engine | https://github.com/heygen-com/hyperframes | HTML/GSAP → video (vox-style-animation runs on it) | Apache-2.0 (LICENSE) | Reference |
 | Three.js | Library | https://github.com/mrdoob/three.js | 3D | MIT (LICENSE) | Secondary |

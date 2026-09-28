@@ -106,3 +106,44 @@ export const logoRevealSchema = z.object({
   /** Optional logo image in public/. */
   logo: z.string().optional(),
 });
+
+const unit = z.number().min(0).max(1);
+
+export const footageSchema = z.object({
+  /** Video (or image) in public/, e.g. "projects/002-x/clip.mp4", or an https URL. */
+  src: z.string(),
+  /** Seconds to skip at the start of the source clip. */
+  trimStart: z.number().min(0).default(0),
+  /** cover = fill the frame and crop; contain = show everything (letterbox). */
+  fit: z.enum(["cover", "contain"]).default("cover"),
+  /**
+   * The point of the source to keep in frame when cropping (0–1, 0.5 = centre).
+   * This is how you crop: choose the focus, then zoom in.
+   */
+  focus: z.object({ x: unit, y: unit }).default({ x: 0.5, y: 0.5 }),
+  /** Scale at scene start → end. 1 = no zoom; 1.0→1.12 = slow push-in (Ken Burns). */
+  zoom: z
+    .object({
+      from: z.number().min(0.5).max(4),
+      to: z.number().min(0.5).max(4),
+    })
+    .default({ from: 1, to: 1 }),
+  /** Drift over the scene, as a fraction of the frame (x: -0.04 = 4% to the left). */
+  pan: z
+    .object({
+      x: z.number().min(-0.5).max(0.5),
+      y: z.number().min(-0.5).max(0.5),
+    })
+    .default({ x: 0, y: 0 }),
+  /** Source audio level (0 = muted; narration usually carries the sound). */
+  volume: z.number().min(0).max(1).default(0),
+  playbackRate: z.number().min(0.25).max(4).default(1),
+  /** Loop the clip if it is shorter than the scene. */
+  loop: z.boolean().default(false),
+  /** Darken the footage (0–0.8) so captions/overlays read. */
+  dim: z.number().min(0).max(0.8).default(0),
+  /** Optional label (kicker style), top-left. */
+  label: z.string().optional(),
+  /** Attribution / source credit, bottom-left. Required by many stock licences. */
+  credit: z.string().optional(),
+});

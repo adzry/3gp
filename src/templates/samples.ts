@@ -93,6 +93,20 @@ export const SAMPLES: Scene[] = [
     },
   },
   {
+    // Needs `npm run fixtures` (placeholder clip) — or point src at a real clip.
+    template: "Footage",
+    seconds: 5,
+    props: {
+      src: "fixtures/placeholder-footage.mp4",
+      trimStart: 2,
+      focus: { x: 0.5, y: 0.5 },
+      zoom: { from: 1, to: 1.15 },
+      pan: { x: -0.03, y: 0 },
+      label: "Footage",
+      credit: "Placeholder test pattern (3gp)",
+    },
+  },
+  {
     template: "LogoReveal",
     seconds: 3.5,
     props: { wordmark: "3gp", tagline: "Idea → 3gp → Claude → video" },

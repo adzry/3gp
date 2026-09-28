@@ -1,6 +1,7 @@
 // Shared helpers for 3gp tools. Node >= 22 (imports the zod schemas directly
 // from src/ via Node's built-in TypeScript type stripping).
 import { spawnSync } from "node:child_process";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,6 +11,19 @@ export const ROOT = path.resolve(
   "..",
 );
 export const PROJECTS_DIR = path.join(ROOT, "projects");
+export const PUBLIC_DIR = path.join(ROOT, "public");
+
+/** Absolute path of a public/-relative media path. */
+export const publicPath = (p) => path.join(PUBLIC_DIR, p);
+
+/** "projects/x/transcript.json" → "projects/x/transcript.draft.json" */
+export const draftPathFor = (p) =>
+  p
+    .replace(/(\.json)?$/, ".draft.json")
+    .replace(".json.draft.json", ".draft.json");
+
+export const sha256File = (file) =>
+  crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 
 export const loadSchema = () => import(path.join(ROOT, "src/video/schema.ts"));
 
@@ -60,6 +74,129 @@ export const validateProject = async (file) => {
 };
 
 /**
+ * Full check of a project: schema, media paths/existence, transcript validity
+ * and staleness, and the resolved timeline of every composition.
+ *
+ * A voice-over whose audio file doesn't exist yet is PENDING (needs a
+ * recording from the user), not broken: its timing is checked against the
+ * draft transcript if there is one.
+ *
+ * @param {string} file  path to video.json
+ * @param {{ transcript?: string }} [opts]  override transcript (public/-relative or absolute)
+ */
+export const checkProject = async (file, opts = {}) => {
+  const v = await validateProject(file);
+  const out = {
+    ok: false,
+    data: null,
+    errors: [],
+    warnings: [],
+    pending: [],
+    compositions: [],
+    transcript: null,
+    transcriptPath: null,
+  };
+  if (!v.ok) return { ...out, errors: v.errors };
+  out.data = v.data;
+  const { expandProject } = await loadSchema();
+  const { collectMediaRefs, checkMediaPath, isRemote } = await import(
+    path.join(ROOT, "src/video/media.ts")
+  );
+  const { parseTranscript } = await import(
+    path.join(ROOT, "src/video/transcript.ts")
+  );
+  const { resolveTimeline } = await import(
+    path.join(ROOT, "src/video/timeline.ts")
+  );
+  const videos = expandProject(v.data);
+  const vo = v.data.voiceover;
+
+  // Media: path shape + existence.
+  for (const ref of collectMediaRefs(videos[0])) {
+    const problem = checkMediaPath(ref);
+    if (problem) out.errors.push(problem);
+    else if (!isRemote(ref.path) && !fs.existsSync(publicPath(ref.path))) {
+      if (vo && (ref.path === vo.src || ref.path === vo.transcript)) continue; // handled below
+      if (ref.path.startsWith("fixtures/")) {
+        out.pending.push(
+          `${ref.where}: generated fixture missing — run \`npm run fixtures\``,
+        );
+        continue;
+      }
+      out.errors.push(`${ref.where}: file not found: public/${ref.path}`);
+    }
+  }
+
+  // Transcript.
+  let transcriptFile = null;
+  if (opts.transcript) {
+    transcriptFile = path.isAbsolute(opts.transcript)
+      ? opts.transcript
+      : publicPath(opts.transcript);
+    if (!fs.existsSync(transcriptFile))
+      out.errors.push(`transcript override not found: ${opts.transcript}`);
+  } else if (vo) {
+    const audioExists = fs.existsSync(publicPath(vo.src));
+    const tFile = publicPath(vo.transcript);
+    const draft = publicPath(draftPathFor(vo.transcript));
+    if (!audioExists) {
+      out.pending.push(
+        `voice-over not recorded yet: add public/${vo.src}, then run \`npm run transcribe -- ${path.basename(path.dirname(file))}\``,
+      );
+      if (fs.existsSync(draft)) transcriptFile = draft;
+      else
+        out.pending.push(
+          `no draft transcript to check timing against (\`npm run transcript -- draft ${path.basename(path.dirname(file))}\`)`,
+        );
+    } else if (!fs.existsSync(tFile)) {
+      out.errors.push(
+        `voiceover.transcript: public/${vo.transcript} is missing — run \`npm run transcribe -- ${path.basename(path.dirname(file))}\``,
+      );
+    } else {
+      transcriptFile = tFile;
+    }
+  }
+  if (transcriptFile && fs.existsSync(transcriptFile)) {
+    try {
+      out.transcript = parseTranscript(
+        JSON.parse(fs.readFileSync(transcriptFile, "utf8")),
+      );
+      out.transcriptPath = transcriptFile;
+      if (
+        vo &&
+        out.transcript.engine.name !== "draft" &&
+        fs.existsSync(publicPath(vo.src)) &&
+        out.transcript.sourceSha256
+      ) {
+        if (sha256File(publicPath(vo.src)) !== out.transcript.sourceSha256) {
+          out.errors.push(
+            `transcript is stale: public/${vo.src} changed since it was transcribed — run \`npm run transcribe -- ${path.basename(path.dirname(file))} --force\``,
+          );
+        }
+      }
+    } catch (e) {
+      out.errors.push(`${path.relative(ROOT, transcriptFile)}: ${e.message}`);
+    }
+  }
+
+  // Timeline per composition (only meaningful if a transcript is available when needed).
+  const needsTranscript = v.data.scenes.some(
+    (s) => s.timing && !("from" in s.timing),
+  );
+  if (!needsTranscript || out.transcript) {
+    for (const video of videos) {
+      const t = resolveTimeline(video, out.transcript);
+      out.compositions.push({ video, timeline: t });
+      for (const e of t.errors) if (!out.errors.includes(e)) out.errors.push(e);
+      for (const w of t.warnings)
+        if (!out.warnings.includes(w)) out.warnings.push(w);
+    }
+  }
+  out.ok = out.errors.length === 0;
+  return out;
+};
+
+/**
  * Chromium for rendering. Respects REMOTION_BROWSER_EXECUTABLE; otherwise uses
  * a Playwright-installed headless shell if present; otherwise Remotion
  * downloads its own on first render.
@@ -100,6 +237,11 @@ const VALUE_FLAGS = new Set([
   "id",
   "width",
   "fps",
+  "transcript",
+  "model",
+  "language",
+  "from-json",
+  "out",
 ]);
 
 export const parseArgs = (argv) => {
