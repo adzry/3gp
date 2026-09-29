@@ -51,7 +51,8 @@ tools auto-detect Playwright's under `PLAYWRIGHT_BROWSERS_PATH`).
 │   ├── video/                 scene-list format (schema.ts), SceneVideo renderer,
 │   │                          transcript.ts (format), timeline.ts (seconds/voice → frames)
 │   ├── templates/             TitleCard, KineticText, LowerThird, QuoteCard,
-│   │                          MetricCard, BarChart, CaptionedShort, LogoReveal, Footage
+│   │                          MetricCard, BarChart, LineChart, Comparison,
+│   │                          CaptionedShort, EndCard, LogoReveal, Footage
 │   │                          + schemas.ts (zod) + samples.ts (gallery/examples)
 │   ├── components/            Stage, Reveal, WordReveal, Headline, Emphasis,
 │   │                          CountUp, HandCircle, Captions, Kicker, Media, SceneShell
@@ -171,6 +172,9 @@ that already show the words. Details: [`tools/captions/README.md`](tools/caption
 | `BarChart` | Comparisons (≤ 8 bars) | `title`, `data[{label,value,highlight}]`, `annotation`, `source` |
 | `CaptionedShort` | Vertical VO + word-timed captions | `captions` / `captionsFile`, `audio`, `background`, `headline` |
 | `LogoReveal` | Openers, sign-offs | `wordmark`, `tagline`, `logo` |
+| `LineChart` | Trends over time / ordered steps (2–24 points) | `title`, `data[{label,value}]`, `unit`, `highlight`, `annotation`, `zeroBased`, `source` |
+| `Comparison` | Before/after, A vs B | `title`, `left`/`right` `{label,title,points[],media}`, `winner` |
+| `EndCard` | Closing CTA + credits/attributions | `headline`, `subline`, `credits[]` |
 | `Footage` | A clip or still, any aspect ratio | `src`, `trimStart`, `fit`, `focus{x,y}` (crop), `zoom{from,to}`, `pan{x,y}`, `loop`, `dim`, `label`, `credit` |
 
 Full schemas: `src/templates/schemas.ts`. Working examples of every template:

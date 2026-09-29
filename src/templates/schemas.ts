@@ -147,3 +147,45 @@ export const footageSchema = z.object({
   /** Attribution / source credit, bottom-left. Required by many stock licences. */
   credit: z.string().optional(),
 });
+
+export const lineChartSchema = z.object({
+  title: z.string(),
+  unit: z.string().default(""),
+  /** Points in order (x labels, e.g. years). 2–24 points. */
+  data: z
+    .array(z.object({ label: z.string(), value: z.number() }))
+    .min(2)
+    .max(24),
+  /** Index of the point to call out (circle + note). */
+  highlight: z.number().int().min(0).optional(),
+  annotation: z
+    .string()
+    .optional()
+    .describe("Hand-written note at the highlighted point."),
+  /** Start the y-axis at zero (honest default) or fit to the data range. */
+  zeroBased: z.boolean().default(true),
+  source: z.string().optional(),
+});
+
+const comparisonSide = z.object({
+  label: z.string().describe('Small header, e.g. "Before", "Plan A".'),
+  title: z.string(),
+  points: z.array(z.string()).max(5).default([]),
+  /** Optional image/video in public/ shown at the top of the panel. */
+  media: z.string().optional(),
+});
+
+export const comparisonSchema = z.object({
+  title: z.string().optional(),
+  left: comparisonSide,
+  right: comparisonSide,
+  /** Which side is the answer: gets the accent. "none" = neutral comparison. */
+  winner: z.enum(["left", "right", "none"]).default("right"),
+});
+
+export const endCardSchema = z.object({
+  headline: z.string().describe("Call to action or closing line."),
+  subline: z.string().optional().describe("URL, handle, or next step."),
+  /** Credits / attributions, one per line (e.g. required by stock licences). */
+  credits: z.array(z.string()).max(12).default([]),
+});

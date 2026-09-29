@@ -12,7 +12,7 @@ HOOK → PROBLEM → CONTEXT → EVIDENCE → EXPLANATION → SOLUTION → PAYOF
 | Problem | Make the pain concrete and specific | KineticText | 3–6 s |
 | Context | Why now, why it matters | TitleCard (subtitle) | 3–5 s |
 | Evidence | One number or exhibit that proves the problem | MetricCard / QuoteCard | 4–6 s |
-| Explanation | The mechanism — usually a comparison | BarChart / sequence of TitleCards | 5–15 s |
+| Explanation | The mechanism — usually a comparison | BarChart / LineChart / Comparison | 5–15 s |
 | Solution | The answer in one line | KineticText | 3–5 s |
 | Payoff | What the viewer can now do/see; brand | LogoReveal / TitleCard | 3–5 s |
 

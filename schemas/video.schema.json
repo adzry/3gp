@@ -1615,6 +1615,526 @@
               "template",
               "props"
             ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "template": {
+                "type": "string",
+                "const": "LineChart"
+              },
+              "seconds": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "timing": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "words": {
+                        "type": "array",
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        ],
+                        "items": false,
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "words"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "segments": {
+                        "type": "array",
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        ],
+                        "items": false,
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "segments"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "phrase": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "through": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "phrase"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "from": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "to": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      }
+                    },
+                    "required": [
+                      "from",
+                      "to"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "captions": {
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string"
+              },
+              "theme": {
+                "type": "string",
+                "enum": [
+                  "studio",
+                  "vox-editorial"
+                ]
+              },
+              "props": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "unit": {
+                    "default": "",
+                    "type": "string"
+                  },
+                  "data": {
+                    "minItems": 2,
+                    "maxItems": 24,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "value"
+                      ]
+                    }
+                  },
+                  "highlight": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "annotation": {
+                    "description": "Hand-written note at the highlighted point.",
+                    "type": "string"
+                  },
+                  "zeroBased": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "source": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title",
+                  "data"
+                ]
+              }
+            },
+            "required": [
+              "template",
+              "props"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "template": {
+                "type": "string",
+                "const": "Comparison"
+              },
+              "seconds": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "timing": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "words": {
+                        "type": "array",
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        ],
+                        "items": false,
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "words"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "segments": {
+                        "type": "array",
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        ],
+                        "items": false,
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "segments"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "phrase": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "through": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "phrase"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "from": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "to": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      }
+                    },
+                    "required": [
+                      "from",
+                      "to"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "captions": {
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string"
+              },
+              "theme": {
+                "type": "string",
+                "enum": [
+                  "studio",
+                  "vox-editorial"
+                ]
+              },
+              "props": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "left": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "description": "Small header, e.g. \"Before\", \"Plan A\"."
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "points": {
+                        "default": [],
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "media": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "title"
+                    ]
+                  },
+                  "right": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "description": "Small header, e.g. \"Before\", \"Plan A\"."
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "points": {
+                        "default": [],
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "media": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "title"
+                    ]
+                  },
+                  "winner": {
+                    "default": "right",
+                    "type": "string",
+                    "enum": [
+                      "left",
+                      "right",
+                      "none"
+                    ]
+                  }
+                },
+                "required": [
+                  "left",
+                  "right"
+                ]
+              }
+            },
+            "required": [
+              "template",
+              "props"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "template": {
+                "type": "string",
+                "const": "EndCard"
+              },
+              "seconds": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "timing": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "words": {
+                        "type": "array",
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        ],
+                        "items": false,
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "words"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "segments": {
+                        "type": "array",
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        ],
+                        "items": false,
+                        "minItems": 2,
+                        "maxItems": 2
+                      }
+                    },
+                    "required": [
+                      "segments"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "phrase": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "through": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "phrase"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "from": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "to": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      }
+                    },
+                    "required": [
+                      "from",
+                      "to"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "captions": {
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string"
+              },
+              "theme": {
+                "type": "string",
+                "enum": [
+                  "studio",
+                  "vox-editorial"
+                ]
+              },
+              "props": {
+                "type": "object",
+                "properties": {
+                  "headline": {
+                    "type": "string",
+                    "description": "Call to action or closing line."
+                  },
+                  "subline": {
+                    "description": "URL, handle, or next step.",
+                    "type": "string"
+                  },
+                  "credits": {
+                    "default": [],
+                    "maxItems": 12,
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "headline"
+                ]
+              }
+            },
+            "required": [
+              "template",
+              "props"
+            ]
           }
         ]
       }

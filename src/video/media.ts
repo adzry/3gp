@@ -45,6 +45,10 @@ export const collectMediaRefs = (video: VideoProps): MediaRef[] => {
         add(scene.props.audio, "audio", `${at}.audio`);
         add(scene.props.captionsFile, "json", `${at}.captionsFile`);
         break;
+      case "Comparison":
+        add(scene.props.left.media, "visual", `${at}.left.media`);
+        add(scene.props.right.media, "visual", `${at}.right.media`);
+        break;
       case "LogoReveal":
         add(scene.props.logo, "image", `${at}.logo`);
         break;

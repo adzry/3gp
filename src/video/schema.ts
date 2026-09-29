@@ -64,6 +64,9 @@ export const sceneSchema = z.discriminatedUnion("template", [
   scene("CaptionedShort", T.captionedShortSchema),
   scene("LogoReveal", T.logoRevealSchema),
   scene("Footage", T.footageSchema),
+  scene("LineChart", T.lineChartSchema),
+  scene("Comparison", T.comparisonSchema),
+  scene("EndCard", T.endCardSchema),
 ]);
 
 export type Scene = z.input<typeof sceneSchema>;

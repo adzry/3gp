@@ -93,6 +93,52 @@ export const SAMPLES: Scene[] = [
     },
   },
   {
+    template: "LineChart",
+    seconds: 5.5,
+    props: {
+      title: "Megapixels per frame",
+      unit: "M",
+      data: [
+        { label: "QCIF", value: 0.03 },
+        { label: "CIF", value: 0.1 },
+        { label: "480p", value: 0.41 },
+        { label: "720p", value: 0.92 },
+        { label: "1080p", value: 2.07 },
+        { label: "1440p", value: 3.69 },
+        { label: "4K", value: 8.29 },
+      ],
+      highlight: 4,
+      annotation: "today's default",
+      source: "width × height of each resolution",
+    },
+  },
+  {
+    template: "Comparison",
+    seconds: 5.5,
+    props: {
+      title: "Making the next video",
+      left: {
+        label: "Before",
+        title: "By hand",
+        points: [
+          "Re-time scenes after every edit",
+          "Type captions manually",
+          "One-off animations",
+        ],
+      },
+      right: {
+        label: "With 3gp",
+        title: "From data",
+        points: [
+          "Scenes follow the voice",
+          "Captions from the transcript",
+          "Reusable templates",
+        ],
+      },
+      winner: "right",
+    },
+  },
+  {
     // Needs `npm run fixtures` (placeholder clip) — or point src at a real clip.
     template: "Footage",
     seconds: 5,
@@ -104,6 +150,18 @@ export const SAMPLES: Scene[] = [
       pan: { x: -0.03, y: 0 },
       label: "Footage",
       credit: "Placeholder test pattern (3gp)",
+    },
+  },
+  {
+    template: "EndCard",
+    seconds: 4,
+    props: {
+      headline: "Make the next one faster",
+      subline: "github.com/adzry/3gp",
+      credits: [
+        "Fonts: Inter, Archivo Black, Caveat, JetBrains Mono — SIL OFL 1.1",
+        "Built with Remotion",
+      ],
     },
   },
   {

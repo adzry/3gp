@@ -68,6 +68,6 @@ TitleCard · KineticText · LowerThird · QuoteCard · MetricCard · BarChart ·
 CaptionedShort · LogoReveal. "Product promo" is a **recipe** composed from
 these (`recipes/product-launch.md`), not a monolithic template.
 
-Candidates, in order of expected value: `Footage` (clip with trims + Ken
-Burns), `LineChart`, `Comparison` (split before/after), `MapRoute` (via
-`/remotion-maps`), `Audiogram`, `EndCard`.
+Added since: `Footage` (trim, focus-crop, zoom/pan), `LineChart`,
+`Comparison`, `EndCard`. Remaining candidates: `MapRoute` (via
+`/remotion-maps`), `Audiogram`.

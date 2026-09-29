@@ -13,7 +13,8 @@ PROBLEM → PRODUCT REVEAL → FEATURE → FEATURE → PROOF → RESULT → CTA
 | Feature ×2–3 | Benefits, not feature names. One per scene | TitleCard (kicker "Feature") |
 | Proof | A measured number with its method | MetricCard |
 | Result | Customer voice | QuoteCard (real customer, with permission) |
-| CTA | One action, one URL | TitleCard `align: center` |
+| Problem vs product (optional) | Old way vs new way | Comparison (`winner: "right"`) |
+| CTA | One action, one URL (+ required credits) | EndCard |
 
 **Variants:** add `"variants": [{ "id": "<id>-vertical", "format": "vertical" }]`
 to get a 9:16 cut from the same content for Reels/Shorts/TikTok.
