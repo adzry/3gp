@@ -265,6 +265,7 @@ the `gallery-studio` / `gallery-vox-editorial` compositions).
 |---|---|---|
 | `studio` | Calm dark screen, one mint accent, overdamped motion | Product, tech, social |
 | `vox-editorial` | Printed paper, ink, yellow highlighter, red pen annotation, sheet-wipe cuts | Explainers, journalism, data stories |
+| `orbit` | Night navy, cream serif type, amber = time, blue = position, red = error; hairline geometry | Science explainers about invisible things (signals, time, orbits) — project 005 |
 
 Per-scene override: `"theme": "studio"` on any scene. Specs:
 `src/styles/<name>/STYLE.md`.
@@ -306,6 +307,8 @@ Claude's standing instructions are in [`CLAUDE.md`](CLAUDE.md).
 | `npm run media -- probe\|web\|gif\|loudnorm\|wav16k\|silences <file>` | FFmpeg tasks (Remotion's bundled FFmpeg) |
 | `npm run transcribe -- <nnn \| file> [--model m] [--language l] [--force]` | Local whisper.cpp → transcript JSON (word timestamps) |
 | `npm run transcript -- <nnn> [--draft]` · `npm run transcript -- draft <nnn>` | List words/scene timing · draft transcript from script |
+| `npm run voice -- <nnn> [--voice bdl] [--gap s] [--section-gap s]` | SCRATCH narration from the script's `VO:` lines (offline RHVoice) → `voiceover.wav` |
+| `npm run align -- <nnn>` | Word timings for a KNOWN script on real audio (pocketsphinx forced alignment) → transcript JSON |
 | `npm run stills\|render -- <nnn> --draft` | Voice-first preview on the draft transcript |
 | `npm run music -- generate <nnn \| out.wav> [--mood calm\|bright] [--seed N] [--seconds N]` | Generate a licence-clean music bed |
 | `npm run fixtures` | Render the placeholder footage test clip → `public/fixtures/` |

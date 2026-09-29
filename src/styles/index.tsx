@@ -1,5 +1,6 @@
 import React, { createContext, useContext } from "react";
 import type { ThemeName } from "./names";
+import { orbit } from "./orbit/tokens";
 import { studio } from "./studio/tokens";
 import type { Theme } from "./types";
 import { voxEditorial } from "./vox-editorial/tokens";
@@ -11,6 +12,7 @@ export { THEME_NAMES, zThemeName, type ThemeName } from "./names";
 export const THEMES: Record<ThemeName, Theme> = {
   studio,
   "vox-editorial": voxEditorial,
+  orbit,
 };
 
 const ThemeContext = createContext<Theme>(studio);

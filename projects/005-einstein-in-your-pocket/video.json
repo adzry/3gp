@@ -1,0 +1,122 @@
+{
+  "$schema": "../../schemas/video.schema.json",
+  "id": "p005-einstein-in-your-pocket",
+  "title": "Einstein in your pocket",
+  "fps": 30,
+  "format": "landscape",
+  "theme": "orbit",
+  "scenes": [
+    {
+      "name": "Cold open",
+      "custom": "ColdOpen",
+      "timing": {
+        "phrase": "Right now"
+      },
+      "transition": "none",
+      "captions": false
+    },
+    {
+      "name": "The question",
+      "custom": "TheQuestion",
+      "timing": {
+        "phrase": "To see why"
+      },
+      "transition": "none",
+      "captions": false
+    },
+    {
+      "name": "Constellation",
+      "custom": "Constellation",
+      "timing": {
+        "phrase": "About twenty thousand"
+      },
+      "transition": "none"
+    },
+    {
+      "name": "Time signal",
+      "custom": "TimeSignal",
+      "timing": {
+        "phrase": "Each one carries"
+      },
+      "transition": "none"
+    },
+    {
+      "name": "Trilateration",
+      "custom": "Trilateration",
+      "timing": {
+        "phrase": "One satellite puts"
+      },
+      "transition": "none"
+    },
+    {
+      "name": "The microsecond",
+      "custom": "Microsecond",
+      "timing": {
+        "phrase": "That only works"
+      },
+      "transition": "none"
+    },
+    {
+      "name": "Relativity",
+      "custom": "Relativity",
+      "timing": {
+        "phrase": "And up in orbit"
+      },
+      "transition": "none"
+    },
+    {
+      "name": "Drift",
+      "custom": "Drift",
+      "timing": {
+        "phrase": "Left uncorrected"
+      },
+      "transition": "none"
+    },
+    {
+      "name": "Tuned",
+      "custom": "Tuned",
+      "timing": {
+        "phrase": "So each clock"
+      },
+      "transition": "none"
+    },
+    {
+      "name": "Close",
+      "custom": "Close",
+      "timing": {
+        "phrase": "Every blue dot",
+        "through": "was right"
+      },
+      "transition": "none",
+      "captions": false
+    },
+    {
+      "name": "Credits",
+      "custom": "Credits",
+      "seconds": 5.5,
+      "transition": "none",
+      "captions": false,
+      "musicLevel": 1
+    }
+  ],
+  "variants": [
+    { "id": "p005-einstein-in-your-pocket-vertical", "format": "vertical" },
+    { "id": "p005-einstein-in-your-pocket-square", "format": "square" }
+  ],
+  "audio": {
+    "src": "projects/005-einstein-in-your-pocket/music.generated.wav",
+    "volume": 0.32,
+    "fadeIn": 1.5,
+    "fadeOut": 3,
+    "duckUnderVoice": 0.45
+  },
+  "voiceover": {
+    "src": "projects/005-einstein-in-your-pocket/voiceover.wav",
+    "transcript": "projects/005-einstein-in-your-pocket/transcript.json",
+    "tail": 1.2
+  },
+  "captions": {
+    "position": "bottom",
+    "size": 44
+  }
+}

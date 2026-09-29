@@ -98,6 +98,27 @@ output on the same machine; across CPUs, timings can differ slightly. That's
 why the transcript is saved and committed, not regenerated at render time:
 renders are reproducible from `transcript.json`.
 
+## Forced alignment (known script) and scratch narration
+
+When the narrator READ the script, the words are known and only their
+timing is needed — forced alignment is more precise than recognition and
+needs no Whisper model:
+
+```bash
+npm run voice -- 005    # optional: offline SCRATCH narration (RHVoice) → voiceover.wav
+npm run align -- 005    # pocketsphinx aligns the script's VO: lines to the audio
+npm run transcript -- 005
+```
+
+- Setup: `apt install rhvoice rhvoice-english` (voice) · `pip install pocketsphinx` (align).
+- Output is the same transcript format (`engine.name: "pocketsphinx-align"`),
+  with `sourceSha256`, so re-recording is detected as stale.
+- Words not in the pronunciation dictionary are composed from two dictionary
+  words ("microseconds" = micro + seconds); acronyms are spelled ("GPS").
+  Otherwise the tool stops and names the word — rephrase or spell it out.
+- If the recording doesn't say the script, alignment fails loudly; it never
+  guesses. A scratch voice is a placeholder: say so on delivery.
+
 ## Draft transcripts
 
 `npm run transcript -- draft <project>` estimates timing from the script

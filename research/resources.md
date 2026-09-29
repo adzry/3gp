@@ -40,6 +40,8 @@ import · `Not used`.
 | Blender | Tool | https://www.blender.org | Offline 3D, renders plates for Remotion | GPL (per Blender project) — REQUIRES REVIEW for asset/output questions | External tool |
 | FFmpeg (bundled with Remotion, n7.1 minimal build) | Tool | https://ffmpeg.org | Encode, probe, loudness, GIF | LGPL-2.1+ / parts GPL (LICENSE.md) | **Installed** via `npx remotion ffmpeg` |
 | Zod 4 | Library | npm | Schemas for templates and `video.json` | MIT | **Core** |
+| RHVoice (Ubuntu `rhvoice`, `rhvoice-english`) | TTS engine | https://github.com/RHVoice/RHVoice | Offline SCRATCH narration (`npm run voice`) before a real recording | LGPL-2.1+ (English voices alan/bdl/clb/slt); other voices NC | **Installed** (apt) · placeholder voice only |
+| pocketsphinx 5.1.1 | Forced aligner | https://github.com/cmusphinx/pocketsphinx | Word timings for a known script on real audio (`npm run align`); works offline, bundles its en-US model | BSD-2-Clause | **Installed** (pip) · used when Whisper models are unreachable or the words are known |
 
 ## Agent tooling
 

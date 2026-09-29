@@ -10,6 +10,8 @@ import p002 from "./002-voice-first-demo/video.json";
 import p003 from "./003-what-is-3gp/video.json";
 import p004 from "./004-sejarah-perdagangan-melaka/video.json";
 import { SCENES as s004 } from "./004-sejarah-perdagangan-melaka/scenes";
+import p005 from "./005-einstein-in-your-pocket/video.json";
+import { SCENES as s005 } from "./005-einstein-in-your-pocket/scenes";
 // <3gp:imports>
 
 export const PROJECTS: { video: unknown; scenes?: SceneRegistry }[] = [
@@ -17,5 +19,6 @@ export const PROJECTS: { video: unknown; scenes?: SceneRegistry }[] = [
   { video: p002 },
   { video: p003 },
   { video: p004, scenes: s004 },
+  { video: p005, scenes: s005 },
   // <3gp:projects>
 ];

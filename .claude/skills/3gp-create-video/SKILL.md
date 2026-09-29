@@ -95,6 +95,10 @@ The narration sets the timing. Do this instead of guessing `seconds`:
    `npm run stills -- <nnn> --frames a,b,c`, then confirm the lit word.
 7. **Render** — `npm run render -- <nnn>`.
 
+Known script, no Whisper model (or a scratch voice)? `npm run voice -- <nnn>`
+(offline RHVoice scratch narration) then `npm run align -- <nnn>` (forced
+alignment → real word timings). Disclose a scratch voice as synthetic.
+
 No recording yet? Write `VO:` lines in `script.md`, run
 `npm run transcript -- draft <nnn>` and preview with `--draft`. Say clearly
 that the timing is estimated, not from real audio.

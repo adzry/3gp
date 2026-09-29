@@ -371,6 +371,10 @@ const VALUE_FLAGS = new Set([
   "mood",
   "seconds",
   "seed",
+  "voice",
+  "rate",
+  "gap",
+  "section-gap",
 ]);
 
 export const parseArgs = (argv) => {

@@ -12,6 +12,8 @@ import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2";
 import inter500 from "@fontsource/inter/files/inter-latin-500-normal.woff2";
 import inter700 from "@fontsource/inter/files/inter-latin-700-normal.woff2";
 import inter800 from "@fontsource/inter/files/inter-latin-800-normal.woff2";
+import serif400 from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2";
+import serif400i from "@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2";
 import mono500 from "@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2";
 
 const faces: [family: string, url: string, weight: string][] = [
@@ -23,6 +25,12 @@ const faces: [family: string, url: string, weight: string][] = [
   ["Caveat", caveat500, "500"],
   ["Caveat", caveat700, "700"],
   ["JetBrains Mono", mono500, "500"],
+  ["Instrument Serif", serif400, "400"],
+];
+
+// Italic faces (loadFont defaults to normal style).
+const italicFaces: [family: string, url: string, weight: string][] = [
+  ["Instrument Serif", serif400i, "400"],
 ];
 
 let loaded = false;
@@ -32,5 +40,8 @@ export const loadFonts = () => {
   loaded = true;
   for (const [family, url, weight] of faces) {
     loadFont({ family, url, weight, format: "woff2" });
+  }
+  for (const [family, url, weight] of italicFaces) {
+    loadFont({ family, url, weight, style: "italic", format: "woff2" });
   }
 };

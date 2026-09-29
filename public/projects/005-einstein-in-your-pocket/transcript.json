@@ -1,0 +1,1240 @@
+{
+  "version": 1,
+  "source": "projects/005-einstein-in-your-pocket/voiceover.wav",
+  "sourceSha256": "31f1d72a3f2346179a11c71ed93c8abc4600a37777180e3bf819318c5fb6ec0d",
+  "duration": 87.145,
+  "language": "en",
+  "engine": {
+    "name": "pocketsphinx-align",
+    "model": "en-us (cmudict)"
+  },
+  "createdAt": "2026-09-29T16:50:31.072Z",
+  "segments": [
+    {
+      "start": 0.44,
+      "end": 4.05,
+      "text": "Right now, the phone in your pocket is correcting for Einstein.",
+      "words": [
+        {
+          "word": "Right",
+          "start": 0.44,
+          "end": 0.71
+        },
+        {
+          "word": "now,",
+          "start": 0.71,
+          "end": 1.03
+        },
+        {
+          "word": "the",
+          "start": 1.13,
+          "end": 1.21
+        },
+        {
+          "word": "phone",
+          "start": 1.21,
+          "end": 1.5
+        },
+        {
+          "word": "in",
+          "start": 1.5,
+          "end": 1.62
+        },
+        {
+          "word": "your",
+          "start": 1.62,
+          "end": 1.84
+        },
+        {
+          "word": "pocket",
+          "start": 1.84,
+          "end": 2.27
+        },
+        {
+          "word": "is",
+          "start": 2.27,
+          "end": 2.41
+        },
+        {
+          "word": "correcting",
+          "start": 2.41,
+          "end": 2.99
+        },
+        {
+          "word": "for",
+          "start": 2.99,
+          "end": 3.22
+        },
+        {
+          "word": "Einstein.",
+          "start": 3.22,
+          "end": 4.05
+        }
+      ]
+    },
+    {
+      "start": 5.35,
+      "end": 9.81,
+      "text": "To see why, start with a simpler question. How does it know where you are at all?",
+      "words": [
+        {
+          "word": "To",
+          "start": 5.35,
+          "end": 5.45
+        },
+        {
+          "word": "see",
+          "start": 5.45,
+          "end": 5.63
+        },
+        {
+          "word": "why,",
+          "start": 5.63,
+          "end": 6
+        },
+        {
+          "word": "start",
+          "start": 6.14,
+          "end": 6.47
+        },
+        {
+          "word": "with",
+          "start": 6.47,
+          "end": 6.66
+        },
+        {
+          "word": "a",
+          "start": 6.66,
+          "end": 6.71
+        },
+        {
+          "word": "simpler",
+          "start": 6.71,
+          "end": 7.25
+        },
+        {
+          "word": "question.",
+          "start": 7.25,
+          "end": 7.88
+        },
+        {
+          "word": "How",
+          "start": 8.12,
+          "end": 8.33
+        },
+        {
+          "word": "does",
+          "start": 8.33,
+          "end": 8.56
+        },
+        {
+          "word": "it",
+          "start": 8.56,
+          "end": 8.65
+        },
+        {
+          "word": "know",
+          "start": 8.65,
+          "end": 8.83
+        },
+        {
+          "word": "where",
+          "start": 8.83,
+          "end": 9.02
+        },
+        {
+          "word": "you",
+          "start": 9.02,
+          "end": 9.23
+        },
+        {
+          "word": "are",
+          "start": 9.23,
+          "end": 9.37
+        },
+        {
+          "word": "at",
+          "start": 9.37,
+          "end": 9.48
+        },
+        {
+          "word": "all?",
+          "start": 9.48,
+          "end": 9.81
+        }
+      ]
+    },
+    {
+      "start": 11.11,
+      "end": 16.26,
+      "text": "About twenty thousand kilometers up, around thirty GPS satellites circle the Earth.",
+      "words": [
+        {
+          "word": "About",
+          "start": 11.11,
+          "end": 11.47
+        },
+        {
+          "word": "twenty",
+          "start": 11.47,
+          "end": 11.88
+        },
+        {
+          "word": "thousand",
+          "start": 11.88,
+          "end": 12.37
+        },
+        {
+          "word": "kilometers",
+          "start": 12.37,
+          "end": 13.01
+        },
+        {
+          "word": "up,",
+          "start": 13.01,
+          "end": 13.3
+        },
+        {
+          "word": "around",
+          "start": 13.3,
+          "end": 13.72
+        },
+        {
+          "word": "thirty",
+          "start": 13.72,
+          "end": 14.09
+        },
+        {
+          "word": "GPS",
+          "start": 14.09,
+          "end": 14.69
+        },
+        {
+          "word": "satellites",
+          "start": 14.69,
+          "end": 15.3
+        },
+        {
+          "word": "circle",
+          "start": 15.3,
+          "end": 15.76
+        },
+        {
+          "word": "the",
+          "start": 15.76,
+          "end": 15.92
+        },
+        {
+          "word": "Earth.",
+          "start": 15.92,
+          "end": 16.26
+        }
+      ]
+    },
+    {
+      "start": 17.57,
+      "end": 22.86,
+      "text": "Each one carries an atomic clock, and does one simple thing. It broadcasts the time.",
+      "words": [
+        {
+          "word": "Each",
+          "start": 17.57,
+          "end": 17.81
+        },
+        {
+          "word": "one",
+          "start": 17.81,
+          "end": 18.08
+        },
+        {
+          "word": "carries",
+          "start": 18.08,
+          "end": 18.54
+        },
+        {
+          "word": "an",
+          "start": 18.54,
+          "end": 18.62
+        },
+        {
+          "word": "atomic",
+          "start": 18.62,
+          "end": 19.13
+        },
+        {
+          "word": "clock,",
+          "start": 19.13,
+          "end": 19.55
+        },
+        {
+          "word": "and",
+          "start": 19.55,
+          "end": 19.86
+        },
+        {
+          "word": "does",
+          "start": 19.86,
+          "end": 20.08
+        },
+        {
+          "word": "one",
+          "start": 20.08,
+          "end": 20.35
+        },
+        {
+          "word": "simple",
+          "start": 20.35,
+          "end": 20.81
+        },
+        {
+          "word": "thing.",
+          "start": 20.81,
+          "end": 21.2
+        },
+        {
+          "word": "It",
+          "start": 21.35,
+          "end": 21.5
+        },
+        {
+          "word": "broadcasts",
+          "start": 21.5,
+          "end": 22.24
+        },
+        {
+          "word": "the",
+          "start": 22.24,
+          "end": 22.34
+        },
+        {
+          "word": "time.",
+          "start": 22.34,
+          "end": 22.86
+        }
+      ]
+    },
+    {
+      "start": 23.5,
+      "end": 29.96,
+      "text": "Your phone hears that time a split second late. The signal travels at the speed of light, so the delay is a distance.",
+      "words": [
+        {
+          "word": "Your",
+          "start": 23.5,
+          "end": 23.7
+        },
+        {
+          "word": "phone",
+          "start": 23.7,
+          "end": 24
+        },
+        {
+          "word": "hears",
+          "start": 24,
+          "end": 24.29
+        },
+        {
+          "word": "that",
+          "start": 24.29,
+          "end": 24.46
+        },
+        {
+          "word": "time",
+          "start": 24.46,
+          "end": 24.8
+        },
+        {
+          "word": "a",
+          "start": 24.8,
+          "end": 24.85
+        },
+        {
+          "word": "split",
+          "start": 24.85,
+          "end": 25.23
+        },
+        {
+          "word": "second",
+          "start": 25.23,
+          "end": 25.62
+        },
+        {
+          "word": "late.",
+          "start": 25.62,
+          "end": 26.02
+        },
+        {
+          "word": "The",
+          "start": 26.2,
+          "end": 26.31
+        },
+        {
+          "word": "signal",
+          "start": 26.31,
+          "end": 26.76
+        },
+        {
+          "word": "travels",
+          "start": 26.76,
+          "end": 27.33
+        },
+        {
+          "word": "at",
+          "start": 27.33,
+          "end": 27.43
+        },
+        {
+          "word": "the",
+          "start": 27.43,
+          "end": 27.53
+        },
+        {
+          "word": "speed",
+          "start": 27.53,
+          "end": 27.88
+        },
+        {
+          "word": "of",
+          "start": 27.88,
+          "end": 28
+        },
+        {
+          "word": "light,",
+          "start": 28,
+          "end": 28.42
+        },
+        {
+          "word": "so",
+          "start": 28.42,
+          "end": 28.64
+        },
+        {
+          "word": "the",
+          "start": 28.64,
+          "end": 28.76
+        },
+        {
+          "word": "delay",
+          "start": 28.76,
+          "end": 29.06
+        },
+        {
+          "word": "is",
+          "start": 29.06,
+          "end": 29.21
+        },
+        {
+          "word": "a",
+          "start": 29.21,
+          "end": 29.27
+        },
+        {
+          "word": "distance.",
+          "start": 29.27,
+          "end": 29.96
+        }
+      ]
+    },
+    {
+      "start": 31.24,
+      "end": 41.94,
+      "text": "One satellite puts you somewhere on a sphere. A second narrows it to a circle. A third leaves just two points, and only one of them is on the ground. A fourth checks your phone's own clock.",
+      "words": [
+        {
+          "word": "One",
+          "start": 31.24,
+          "end": 31.51
+        },
+        {
+          "word": "satellite",
+          "start": 31.51,
+          "end": 32.08
+        },
+        {
+          "word": "puts",
+          "start": 32.08,
+          "end": 32.35
+        },
+        {
+          "word": "you",
+          "start": 32.35,
+          "end": 32.46
+        },
+        {
+          "word": "somewhere",
+          "start": 32.46,
+          "end": 32.98
+        },
+        {
+          "word": "on",
+          "start": 32.98,
+          "end": 33.13
+        },
+        {
+          "word": "a",
+          "start": 33.13,
+          "end": 33.19
+        },
+        {
+          "word": "sphere.",
+          "start": 33.19,
+          "end": 33.73
+        },
+        {
+          "word": "A",
+          "start": 33.88,
+          "end": 33.96
+        },
+        {
+          "word": "second",
+          "start": 33.96,
+          "end": 34.38
+        },
+        {
+          "word": "narrows",
+          "start": 34.38,
+          "end": 34.82
+        },
+        {
+          "word": "it",
+          "start": 34.82,
+          "end": 34.92
+        },
+        {
+          "word": "to",
+          "start": 34.92,
+          "end": 35.07
+        },
+        {
+          "word": "a",
+          "start": 35.07,
+          "end": 35.11
+        },
+        {
+          "word": "circle.",
+          "start": 35.11,
+          "end": 35.71
+        },
+        {
+          "word": "A",
+          "start": 35.86,
+          "end": 35.94
+        },
+        {
+          "word": "third",
+          "start": 35.94,
+          "end": 36.27
+        },
+        {
+          "word": "leaves",
+          "start": 36.27,
+          "end": 36.59
+        },
+        {
+          "word": "just",
+          "start": 36.59,
+          "end": 36.9
+        },
+        {
+          "word": "two",
+          "start": 36.9,
+          "end": 37.08
+        },
+        {
+          "word": "points,",
+          "start": 37.08,
+          "end": 37.66
+        },
+        {
+          "word": "and",
+          "start": 37.66,
+          "end": 37.87
+        },
+        {
+          "word": "only",
+          "start": 37.87,
+          "end": 38.22
+        },
+        {
+          "word": "one",
+          "start": 38.22,
+          "end": 38.49
+        },
+        {
+          "word": "of",
+          "start": 38.49,
+          "end": 38.59
+        },
+        {
+          "word": "them",
+          "start": 38.59,
+          "end": 38.79
+        },
+        {
+          "word": "is",
+          "start": 38.79,
+          "end": 38.95
+        },
+        {
+          "word": "on",
+          "start": 38.95,
+          "end": 39.12
+        },
+        {
+          "word": "the",
+          "start": 39.12,
+          "end": 39.19
+        },
+        {
+          "word": "ground.",
+          "start": 39.19,
+          "end": 39.68
+        },
+        {
+          "word": "A",
+          "start": 39.89,
+          "end": 39.97
+        },
+        {
+          "word": "fourth",
+          "start": 39.97,
+          "end": 40.34
+        },
+        {
+          "word": "checks",
+          "start": 40.34,
+          "end": 40.65
+        },
+        {
+          "word": "your",
+          "start": 40.65,
+          "end": 40.81
+        },
+        {
+          "word": "phone's",
+          "start": 40.81,
+          "end": 41.23
+        },
+        {
+          "word": "own",
+          "start": 41.23,
+          "end": 41.46
+        },
+        {
+          "word": "clock.",
+          "start": 41.46,
+          "end": 41.94
+        }
+      ]
+    },
+    {
+      "start": 43.24,
+      "end": 48.71,
+      "text": "That only works if the timing is exact. An error of one microsecond is three hundred meters.",
+      "words": [
+        {
+          "word": "That",
+          "start": 43.24,
+          "end": 43.46
+        },
+        {
+          "word": "only",
+          "start": 43.46,
+          "end": 43.81
+        },
+        {
+          "word": "works",
+          "start": 43.81,
+          "end": 44.14
+        },
+        {
+          "word": "if",
+          "start": 44.14,
+          "end": 44.31
+        },
+        {
+          "word": "the",
+          "start": 44.31,
+          "end": 44.41
+        },
+        {
+          "word": "timing",
+          "start": 44.41,
+          "end": 44.86
+        },
+        {
+          "word": "is",
+          "start": 44.86,
+          "end": 45.01
+        },
+        {
+          "word": "exact.",
+          "start": 45.01,
+          "end": 45.58
+        },
+        {
+          "word": "An",
+          "start": 45.73,
+          "end": 45.88
+        },
+        {
+          "word": "error",
+          "start": 45.88,
+          "end": 46.2
+        },
+        {
+          "word": "of",
+          "start": 46.2,
+          "end": 46.33
+        },
+        {
+          "word": "one",
+          "start": 46.33,
+          "end": 46.57
+        },
+        {
+          "word": "microsecond",
+          "start": 46.57,
+          "end": 47.42
+        },
+        {
+          "word": "is",
+          "start": 47.42,
+          "end": 47.58
+        },
+        {
+          "word": "three",
+          "start": 47.58,
+          "end": 47.79
+        },
+        {
+          "word": "hundred",
+          "start": 47.79,
+          "end": 48.18
+        },
+        {
+          "word": "meters.",
+          "start": 48.18,
+          "end": 48.71
+        }
+      ]
+    },
+    {
+      "start": 49.99,
+      "end": 52.69,
+      "text": "And up in orbit, time itself runs differently.",
+      "words": [
+        {
+          "word": "And",
+          "start": 49.99,
+          "end": 50.19
+        },
+        {
+          "word": "up",
+          "start": 50.19,
+          "end": 50.33
+        },
+        {
+          "word": "in",
+          "start": 50.33,
+          "end": 50.47
+        },
+        {
+          "word": "orbit,",
+          "start": 50.47,
+          "end": 50.82
+        },
+        {
+          "word": "time",
+          "start": 50.82,
+          "end": 51.2
+        },
+        {
+          "word": "itself",
+          "start": 51.2,
+          "end": 51.66
+        },
+        {
+          "word": "runs",
+          "start": 51.66,
+          "end": 52.01
+        },
+        {
+          "word": "differently.",
+          "start": 52.01,
+          "end": 52.69
+        }
+      ]
+    },
+    {
+      "start": 53.34,
+      "end": 62.19,
+      "text": "The satellites move fast, which slows their clocks by seven microseconds a day. But they sit higher in Earth's gravity, which speeds them up by forty five.",
+      "words": [
+        {
+          "word": "The",
+          "start": 53.34,
+          "end": 53.43
+        },
+        {
+          "word": "satellites",
+          "start": 53.43,
+          "end": 54.09
+        },
+        {
+          "word": "move",
+          "start": 54.09,
+          "end": 54.34
+        },
+        {
+          "word": "fast,",
+          "start": 54.34,
+          "end": 54.76
+        },
+        {
+          "word": "which",
+          "start": 54.76,
+          "end": 55.01
+        },
+        {
+          "word": "slows",
+          "start": 55.01,
+          "end": 55.39
+        },
+        {
+          "word": "their",
+          "start": 55.39,
+          "end": 55.58
+        },
+        {
+          "word": "clocks",
+          "start": 55.58,
+          "end": 55.99
+        },
+        {
+          "word": "by",
+          "start": 55.99,
+          "end": 56.19
+        },
+        {
+          "word": "seven",
+          "start": 56.19,
+          "end": 56.54
+        },
+        {
+          "word": "microseconds",
+          "start": 56.54,
+          "end": 57.44
+        },
+        {
+          "word": "a",
+          "start": 57.44,
+          "end": 57.49
+        },
+        {
+          "word": "day.",
+          "start": 57.49,
+          "end": 57.87
+        },
+        {
+          "word": "But",
+          "start": 58.07,
+          "end": 58.24
+        },
+        {
+          "word": "they",
+          "start": 58.24,
+          "end": 58.43
+        },
+        {
+          "word": "sit",
+          "start": 58.43,
+          "end": 58.67
+        },
+        {
+          "word": "higher",
+          "start": 58.67,
+          "end": 59.01
+        },
+        {
+          "word": "in",
+          "start": 59.01,
+          "end": 59.15
+        },
+        {
+          "word": "Earth's",
+          "start": 59.15,
+          "end": 59.46
+        },
+        {
+          "word": "gravity,",
+          "start": 59.46,
+          "end": 60.09
+        },
+        {
+          "word": "which",
+          "start": 60.09,
+          "end": 60.37
+        },
+        {
+          "word": "speeds",
+          "start": 60.37,
+          "end": 60.83
+        },
+        {
+          "word": "them",
+          "start": 60.83,
+          "end": 61.04
+        },
+        {
+          "word": "up",
+          "start": 61.04,
+          "end": 61.2
+        },
+        {
+          "word": "by",
+          "start": 61.2,
+          "end": 61.39
+        },
+        {
+          "word": "forty",
+          "start": 61.39,
+          "end": 61.78
+        },
+        {
+          "word": "five.",
+          "start": 61.78,
+          "end": 62.19
+        }
+      ]
+    },
+    {
+      "start": 62.94,
+      "end": 67.12,
+      "text": "Net result: thirty eight microseconds gained, every single day.",
+      "words": [
+        {
+          "word": "Net",
+          "start": 62.94,
+          "end": 63.16
+        },
+        {
+          "word": "result:",
+          "start": 63.16,
+          "end": 63.71
+        },
+        {
+          "word": "thirty",
+          "start": 63.92,
+          "end": 64.32
+        },
+        {
+          "word": "eight",
+          "start": 64.32,
+          "end": 64.51
+        },
+        {
+          "word": "microseconds",
+          "start": 64.51,
+          "end": 65.4
+        },
+        {
+          "word": "gained,",
+          "start": 65.4,
+          "end": 65.89
+        },
+        {
+          "word": "every",
+          "start": 65.89,
+          "end": 66.33
+        },
+        {
+          "word": "single",
+          "start": 66.33,
+          "end": 66.76
+        },
+        {
+          "word": "day.",
+          "start": 66.76,
+          "end": 67.12
+        }
+      ]
+    },
+    {
+      "start": 68.43,
+      "end": 72.56,
+      "text": "Left uncorrected, your position would drift by about ten kilometers a day.",
+      "words": [
+        {
+          "word": "Left",
+          "start": 68.43,
+          "end": 68.7
+        },
+        {
+          "word": "uncorrected,",
+          "start": 68.7,
+          "end": 69.47
+        },
+        {
+          "word": "your",
+          "start": 69.52,
+          "end": 69.72
+        },
+        {
+          "word": "position",
+          "start": 69.72,
+          "end": 70.25
+        },
+        {
+          "word": "would",
+          "start": 70.25,
+          "end": 70.38
+        },
+        {
+          "word": "drift",
+          "start": 70.38,
+          "end": 70.7
+        },
+        {
+          "word": "by",
+          "start": 70.7,
+          "end": 70.92
+        },
+        {
+          "word": "about",
+          "start": 70.92,
+          "end": 71.23
+        },
+        {
+          "word": "ten",
+          "start": 71.23,
+          "end": 71.48
+        },
+        {
+          "word": "kilometers",
+          "start": 71.48,
+          "end": 72.12
+        },
+        {
+          "word": "a",
+          "start": 72.12,
+          "end": 72.18
+        },
+        {
+          "word": "day.",
+          "start": 72.18,
+          "end": 72.56
+        }
+      ]
+    },
+    {
+      "start": 73.86,
+      "end": 80.04,
+      "text": "So each clock is tuned to run slightly slow on the ground, so that in orbit, it ticks in step with clocks on Earth.",
+      "words": [
+        {
+          "word": "So",
+          "start": 73.86,
+          "end": 74.11
+        },
+        {
+          "word": "each",
+          "start": 74.11,
+          "end": 74.34
+        },
+        {
+          "word": "clock",
+          "start": 74.34,
+          "end": 74.7
+        },
+        {
+          "word": "is",
+          "start": 74.7,
+          "end": 74.84
+        },
+        {
+          "word": "tuned",
+          "start": 74.84,
+          "end": 75.11
+        },
+        {
+          "word": "to",
+          "start": 75.11,
+          "end": 75.2
+        },
+        {
+          "word": "run",
+          "start": 75.2,
+          "end": 75.45
+        },
+        {
+          "word": "slightly",
+          "start": 75.45,
+          "end": 75.94
+        },
+        {
+          "word": "slow",
+          "start": 75.94,
+          "end": 76.24
+        },
+        {
+          "word": "on",
+          "start": 76.24,
+          "end": 76.42
+        },
+        {
+          "word": "the",
+          "start": 76.42,
+          "end": 76.49
+        },
+        {
+          "word": "ground,",
+          "start": 76.49,
+          "end": 76.98
+        },
+        {
+          "word": "so",
+          "start": 77.04,
+          "end": 77.27
+        },
+        {
+          "word": "that",
+          "start": 77.27,
+          "end": 77.47
+        },
+        {
+          "word": "in",
+          "start": 77.47,
+          "end": 77.61
+        },
+        {
+          "word": "orbit,",
+          "start": 77.61,
+          "end": 78.05
+        },
+        {
+          "word": "it",
+          "start": 78.05,
+          "end": 78.21
+        },
+        {
+          "word": "ticks",
+          "start": 78.21,
+          "end": 78.46
+        },
+        {
+          "word": "in",
+          "start": 78.46,
+          "end": 78.58
+        },
+        {
+          "word": "step",
+          "start": 78.58,
+          "end": 78.93
+        },
+        {
+          "word": "with",
+          "start": 78.93,
+          "end": 79.09
+        },
+        {
+          "word": "clocks",
+          "start": 79.09,
+          "end": 79.52
+        },
+        {
+          "word": "on",
+          "start": 79.52,
+          "end": 79.69
+        },
+        {
+          "word": "Earth.",
+          "start": 79.69,
+          "end": 80.04
+        }
+      ]
+    },
+    {
+      "start": 81.34,
+      "end": 85.99,
+      "text": "Every blue dot on every map is a small, daily proof that Einstein was right.",
+      "words": [
+        {
+          "word": "Every",
+          "start": 81.34,
+          "end": 81.76
+        },
+        {
+          "word": "blue",
+          "start": 81.76,
+          "end": 82
+        },
+        {
+          "word": "dot",
+          "start": 82,
+          "end": 82.27
+        },
+        {
+          "word": "on",
+          "start": 82.27,
+          "end": 82.44
+        },
+        {
+          "word": "every",
+          "start": 82.44,
+          "end": 82.84
+        },
+        {
+          "word": "map",
+          "start": 82.84,
+          "end": 83.11
+        },
+        {
+          "word": "is",
+          "start": 83.11,
+          "end": 83.26
+        },
+        {
+          "word": "a",
+          "start": 83.26,
+          "end": 83.32
+        },
+        {
+          "word": "small,",
+          "start": 83.32,
+          "end": 83.83
+        },
+        {
+          "word": "daily",
+          "start": 83.83,
+          "end": 84.24
+        },
+        {
+          "word": "proof",
+          "start": 84.24,
+          "end": 84.55
+        },
+        {
+          "word": "that",
+          "start": 84.55,
+          "end": 84.76
+        },
+        {
+          "word": "Einstein",
+          "start": 84.76,
+          "end": 85.4
+        },
+        {
+          "word": "was",
+          "start": 85.4,
+          "end": 85.59
+        },
+        {
+          "word": "right.",
+          "start": 85.59,
+          "end": 85.99
+        }
+      ]
+    }
+  ]
+}

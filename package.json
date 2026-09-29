@@ -15,8 +15,10 @@
     "captions:srt": "node tools/captions/srt-to-json.mjs",
     "media": "node tools/media/media.mjs",
     "music": "node tools/audio/music.mjs",
+    "voice": "node tools/audio/voice.mjs",
     "transcribe": "node tools/captions/transcribe.mjs",
     "transcript": "node tools/captions/transcript.mjs",
+    "align": "node tools/captions/align.mjs",
     "fixtures": "node tools/render.mjs fixture-footage --out public/fixtures/placeholder-footage.mp4",
     "typecheck": "tsc",
     "check": "eslint src projects && tsc && node --test \"tests/*.test.mjs\" && node tools/validate.mjs",
@@ -30,6 +32,7 @@
   "dependencies": {
     "@fontsource/archivo-black": "5.3.0",
     "@fontsource/caveat": "5.3.0",
+    "@fontsource/instrument-serif": "5.3.0",
     "@fontsource/inter": "5.3.0",
     "@fontsource/jetbrains-mono": "5.3.0",
     "@remotion/captions": "4.0.529",

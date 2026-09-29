@@ -29,7 +29,8 @@
       "type": "string",
       "enum": [
         "studio",
-        "vox-editorial"
+        "vox-editorial",
+        "orbit"
       ]
     },
     "lang": {
@@ -270,7 +271,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -439,7 +441,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -602,7 +605,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -762,7 +766,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -923,7 +928,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -1099,7 +1105,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -1281,7 +1288,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -1470,7 +1478,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -1622,7 +1631,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -1878,7 +1888,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -2065,7 +2076,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -2275,7 +2287,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -2434,7 +2447,8 @@
                     "type": "string",
                     "enum": [
                       "studio",
-                      "vox-editorial"
+                      "vox-editorial",
+                      "orbit"
                     ]
                   },
                   "transition": {
@@ -2638,7 +2652,8 @@
                 "type": "string",
                 "enum": [
                   "studio",
-                  "vox-editorial"
+                  "vox-editorial",
+                  "orbit"
                 ]
               },
               "transition": {
@@ -2797,7 +2812,8 @@
             "type": "string",
             "enum": [
               "studio",
-              "vox-editorial"
+              "vox-editorial",
+              "orbit"
             ]
           }
         },
