@@ -1,0 +1,635 @@
+{
+  "version": 1,
+  "source": "projects/002-voice-first-demo/voiceover.wav",
+  "duration": 55.475,
+  "language": "en",
+  "engine": {
+    "name": "draft"
+  },
+  "segments": [
+    {
+      "start": 0.3,
+      "end": 4.95,
+      "text": "This video wasn't timed by hand. It was timed by my voice.",
+      "words": [
+        {
+          "word": "This",
+          "start": 0.3,
+          "end": 0.64
+        },
+        {
+          "word": "video",
+          "start": 0.68,
+          "end": 1.075
+        },
+        {
+          "word": "wasn't",
+          "start": 1.115,
+          "end": 1.51
+        },
+        {
+          "word": "timed",
+          "start": 1.55,
+          "end": 1.945
+        },
+        {
+          "word": "by",
+          "start": 1.985,
+          "end": 2.215
+        },
+        {
+          "word": "hand.",
+          "start": 2.255,
+          "end": 2.595
+        },
+        {
+          "word": "It",
+          "start": 2.985,
+          "end": 3.215
+        },
+        {
+          "word": "was",
+          "start": 3.255,
+          "end": 3.54
+        },
+        {
+          "word": "timed",
+          "start": 3.58,
+          "end": 3.975
+        },
+        {
+          "word": "by",
+          "start": 4.015,
+          "end": 4.245
+        },
+        {
+          "word": "my",
+          "start": 4.285,
+          "end": 4.515
+        },
+        {
+          "word": "voice.",
+          "start": 4.555,
+          "end": 4.95
+        }
+      ]
+    },
+    {
+      "start": 5.79,
+      "end": 15.325,
+      "text": "I recorded the narration first. Then Whisper, running on my own machine, wrote down every word and exactly when I said it.",
+      "words": [
+        {
+          "word": "I",
+          "start": 5.79,
+          "end": 5.97
+        },
+        {
+          "word": "recorded",
+          "start": 6.01,
+          "end": 6.57
+        },
+        {
+          "word": "the",
+          "start": 6.61,
+          "end": 6.895
+        },
+        {
+          "word": "narration",
+          "start": 6.935,
+          "end": 7.55
+        },
+        {
+          "word": "first.",
+          "start": 7.59,
+          "end": 7.985
+        },
+        {
+          "word": "Then",
+          "start": 8.375,
+          "end": 8.715
+        },
+        {
+          "word": "Whisper,",
+          "start": 8.755,
+          "end": 9.26
+        },
+        {
+          "word": "running",
+          "start": 9.48,
+          "end": 9.985
+        },
+        {
+          "word": "on",
+          "start": 10.025,
+          "end": 10.255
+        },
+        {
+          "word": "my",
+          "start": 10.295,
+          "end": 10.525
+        },
+        {
+          "word": "own",
+          "start": 10.565,
+          "end": 10.85
+        },
+        {
+          "word": "machine,",
+          "start": 10.89,
+          "end": 11.395
+        },
+        {
+          "word": "wrote",
+          "start": 11.615,
+          "end": 12.01
+        },
+        {
+          "word": "down",
+          "start": 12.05,
+          "end": 12.39
+        },
+        {
+          "word": "every",
+          "start": 12.43,
+          "end": 12.825
+        },
+        {
+          "word": "word",
+          "start": 12.865,
+          "end": 13.205
+        },
+        {
+          "word": "and",
+          "start": 13.245,
+          "end": 13.53
+        },
+        {
+          "word": "exactly",
+          "start": 13.57,
+          "end": 14.075
+        },
+        {
+          "word": "when",
+          "start": 14.115,
+          "end": 14.455
+        },
+        {
+          "word": "I",
+          "start": 14.495,
+          "end": 14.675
+        },
+        {
+          "word": "said",
+          "start": 14.715,
+          "end": 15.055
+        },
+        {
+          "word": "it.",
+          "start": 15.095,
+          "end": 15.325
+        }
+      ]
+    },
+    {
+      "start": 16.165,
+      "end": 25.15,
+      "text": "Each scene is anchored to a phrase in that transcript. When I say the line, its scene begins, right on the word.",
+      "words": [
+        {
+          "word": "Each",
+          "start": 16.165,
+          "end": 16.505
+        },
+        {
+          "word": "scene",
+          "start": 16.545,
+          "end": 16.94
+        },
+        {
+          "word": "is",
+          "start": 16.98,
+          "end": 17.21
+        },
+        {
+          "word": "anchored",
+          "start": 17.25,
+          "end": 17.81
+        },
+        {
+          "word": "to",
+          "start": 17.85,
+          "end": 18.08
+        },
+        {
+          "word": "a",
+          "start": 18.12,
+          "end": 18.3
+        },
+        {
+          "word": "phrase",
+          "start": 18.34,
+          "end": 18.79
+        },
+        {
+          "word": "in",
+          "start": 18.83,
+          "end": 19.06
+        },
+        {
+          "word": "that",
+          "start": 19.1,
+          "end": 19.44
+        },
+        {
+          "word": "transcript.",
+          "start": 19.48,
+          "end": 20.15
+        },
+        {
+          "word": "When",
+          "start": 20.54,
+          "end": 20.88
+        },
+        {
+          "word": "I",
+          "start": 20.92,
+          "end": 21.1
+        },
+        {
+          "word": "say",
+          "start": 21.14,
+          "end": 21.425
+        },
+        {
+          "word": "the",
+          "start": 21.465,
+          "end": 21.75
+        },
+        {
+          "word": "line,",
+          "start": 21.79,
+          "end": 22.13
+        },
+        {
+          "word": "its",
+          "start": 22.35,
+          "end": 22.635
+        },
+        {
+          "word": "scene",
+          "start": 22.675,
+          "end": 23.07
+        },
+        {
+          "word": "begins,",
+          "start": 23.11,
+          "end": 23.56
+        },
+        {
+          "word": "right",
+          "start": 23.78,
+          "end": 24.175
+        },
+        {
+          "word": "on",
+          "start": 24.215,
+          "end": 24.445
+        },
+        {
+          "word": "the",
+          "start": 24.485,
+          "end": 24.77
+        },
+        {
+          "word": "word.",
+          "start": 24.81,
+          "end": 25.15
+        }
+      ]
+    },
+    {
+      "start": 25.99,
+      "end": 32.485,
+      "text": "From a recording to a finished video takes three commands: transcribe, preview, render.",
+      "words": [
+        {
+          "word": "From",
+          "start": 25.99,
+          "end": 26.33
+        },
+        {
+          "word": "a",
+          "start": 26.37,
+          "end": 26.55
+        },
+        {
+          "word": "recording",
+          "start": 26.59,
+          "end": 27.205
+        },
+        {
+          "word": "to",
+          "start": 27.245,
+          "end": 27.475
+        },
+        {
+          "word": "a",
+          "start": 27.515,
+          "end": 27.695
+        },
+        {
+          "word": "finished",
+          "start": 27.735,
+          "end": 28.295
+        },
+        {
+          "word": "video",
+          "start": 28.335,
+          "end": 28.73
+        },
+        {
+          "word": "takes",
+          "start": 28.77,
+          "end": 29.165
+        },
+        {
+          "word": "three",
+          "start": 29.205,
+          "end": 29.6
+        },
+        {
+          "word": "commands:",
+          "start": 29.64,
+          "end": 30.2
+        },
+        {
+          "word": "transcribe,",
+          "start": 30.42,
+          "end": 31.09
+        },
+        {
+          "word": "preview,",
+          "start": 31.31,
+          "end": 31.815
+        },
+        {
+          "word": "render.",
+          "start": 32.035,
+          "end": 32.485
+        }
+      ]
+    },
+    {
+      "start": 33.325,
+      "end": 40.38,
+      "text": "The footage, the graphics and the captions all follow the same clock: the sound of my voice.",
+      "words": [
+        {
+          "word": "The",
+          "start": 33.325,
+          "end": 33.61
+        },
+        {
+          "word": "footage,",
+          "start": 33.65,
+          "end": 34.155
+        },
+        {
+          "word": "the",
+          "start": 34.375,
+          "end": 34.66
+        },
+        {
+          "word": "graphics",
+          "start": 34.7,
+          "end": 35.26
+        },
+        {
+          "word": "and",
+          "start": 35.3,
+          "end": 35.585
+        },
+        {
+          "word": "the",
+          "start": 35.625,
+          "end": 35.91
+        },
+        {
+          "word": "captions",
+          "start": 35.95,
+          "end": 36.51
+        },
+        {
+          "word": "all",
+          "start": 36.55,
+          "end": 36.835
+        },
+        {
+          "word": "follow",
+          "start": 36.875,
+          "end": 37.325
+        },
+        {
+          "word": "the",
+          "start": 37.365,
+          "end": 37.65
+        },
+        {
+          "word": "same",
+          "start": 37.69,
+          "end": 38.03
+        },
+        {
+          "word": "clock:",
+          "start": 38.07,
+          "end": 38.465
+        },
+        {
+          "word": "the",
+          "start": 38.685,
+          "end": 38.97
+        },
+        {
+          "word": "sound",
+          "start": 39.01,
+          "end": 39.405
+        },
+        {
+          "word": "of",
+          "start": 39.445,
+          "end": 39.675
+        },
+        {
+          "word": "my",
+          "start": 39.715,
+          "end": 39.945
+        },
+        {
+          "word": "voice.",
+          "start": 39.985,
+          "end": 40.38
+        }
+      ]
+    },
+    {
+      "start": 41.22,
+      "end": 49.77,
+      "text": "And if I record a line again, the words move, and every scene moves with them. Nothing is re-timed by hand.",
+      "words": [
+        {
+          "word": "And",
+          "start": 41.22,
+          "end": 41.505
+        },
+        {
+          "word": "if",
+          "start": 41.545,
+          "end": 41.775
+        },
+        {
+          "word": "I",
+          "start": 41.815,
+          "end": 41.995
+        },
+        {
+          "word": "record",
+          "start": 42.035,
+          "end": 42.485
+        },
+        {
+          "word": "a",
+          "start": 42.525,
+          "end": 42.705
+        },
+        {
+          "word": "line",
+          "start": 42.745,
+          "end": 43.085
+        },
+        {
+          "word": "again,",
+          "start": 43.125,
+          "end": 43.52
+        },
+        {
+          "word": "the",
+          "start": 43.74,
+          "end": 44.025
+        },
+        {
+          "word": "words",
+          "start": 44.065,
+          "end": 44.46
+        },
+        {
+          "word": "move,",
+          "start": 44.5,
+          "end": 44.84
+        },
+        {
+          "word": "and",
+          "start": 45.06,
+          "end": 45.345
+        },
+        {
+          "word": "every",
+          "start": 45.385,
+          "end": 45.78
+        },
+        {
+          "word": "scene",
+          "start": 45.82,
+          "end": 46.215
+        },
+        {
+          "word": "moves",
+          "start": 46.255,
+          "end": 46.65
+        },
+        {
+          "word": "with",
+          "start": 46.69,
+          "end": 47.03
+        },
+        {
+          "word": "them.",
+          "start": 47.07,
+          "end": 47.41
+        },
+        {
+          "word": "Nothing",
+          "start": 47.8,
+          "end": 48.305
+        },
+        {
+          "word": "is",
+          "start": 48.345,
+          "end": 48.575
+        },
+        {
+          "word": "re-timed",
+          "start": 48.615,
+          "end": 49.12
+        },
+        {
+          "word": "by",
+          "start": 49.16,
+          "end": 49.39
+        },
+        {
+          "word": "hand.",
+          "start": 49.43,
+          "end": 49.77
+        }
+      ]
+    },
+    {
+      "start": 50.61,
+      "end": 54.585,
+      "text": "Voice first. Then everything else. This is 3gp.",
+      "words": [
+        {
+          "word": "Voice",
+          "start": 50.61,
+          "end": 51.005
+        },
+        {
+          "word": "first.",
+          "start": 51.045,
+          "end": 51.44
+        },
+        {
+          "word": "Then",
+          "start": 51.83,
+          "end": 52.17
+        },
+        {
+          "word": "everything",
+          "start": 52.21,
+          "end": 52.88
+        },
+        {
+          "word": "else.",
+          "start": 52.92,
+          "end": 53.26
+        },
+        {
+          "word": "This",
+          "start": 53.65,
+          "end": 53.99
+        },
+        {
+          "word": "is",
+          "start": 54.03,
+          "end": 54.26
+        },
+        {
+          "word": "3gp.",
+          "start": 54.3,
+          "end": 54.585
+        }
+      ]
+    }
+  ]
+}

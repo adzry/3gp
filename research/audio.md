@@ -15,6 +15,15 @@ Terms were not verifiable from the build environment — see the checklist in
 Preference: CC0/public-domain-style → attribution-only → never NC for
 commercial work.
 
+## 3gp's own music generator
+
+`npm run music -- generate <project>` (`tools/audio/synth.ts`) synthesises a
+simple ambient bed: chord pad, bass pulse, plucked arpeggio; moods `calm`
+(84 bpm, Am–F–C–G) and `bright` (104 bpm, C–G–Am–F). Output measured at
+≈ −14.5 LUFS, −3 dBTP, LRA 1.5 (steady). It's generic by design — fine for
+drafts and explainers; use a verified licensed track for hero pieces.
+Licence: 3gp's own output, no third-party material.
+
 ## Audio in Remotion
 
 - `<Audio>` from `@remotion/media` (installed). 3gp: top-level `audio`
@@ -27,7 +36,11 @@ commercial work.
 
 ## Captions
 
-Pipeline and tool status: [`tools/captions/README.md`](../tools/captions/README.md).
+Pipeline, setup and troubleshooting: [`tools/captions/README.md`](../tools/captions/README.md).
+3gp transcribes locally with **whisper.cpp via `@remotion/install-whisper-cpp`**
+(`npm run transcribe`) into its own transcript format, which drives both
+captions and voice-timed scenes. One engine only; the others below are
+documented alternatives, not installed.
 
 | Tool | Licence (verified) | Word timestamps | Notes |
 |---|---|---|---|

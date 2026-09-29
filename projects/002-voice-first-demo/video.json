@@ -1,0 +1,155 @@
+{
+  "$schema": "../../schemas/video.schema.json",
+  "id": "p002-voice-first-demo",
+  "title": "Voice-first demo",
+  "fps": 30,
+  "format": "landscape",
+  "theme": "vox-editorial",
+  "audio": {
+    "src": "projects/002-voice-first-demo/music.generated.wav",
+    "volume": 0.3,
+    "fadeIn": 1,
+    "fadeOut": 3,
+    "duckUnderVoice": 0.35
+  },
+  "voiceover": {
+    "src": "projects/002-voice-first-demo/voiceover.wav",
+    "transcript": "projects/002-voice-first-demo/transcript.json",
+    "tail": 1.5
+  },
+  "captions": {
+    "position": "bottom",
+    "size": 54
+  },
+  "scenes": [
+    {
+      "name": "Hook",
+      "template": "TitleCard",
+      "timing": {
+        "phrase": "This video wasn't timed"
+      },
+      "props": {
+        "kicker": "Voice-first",
+        "title": "Timed by a voice, not by hand",
+        "emphasis": [
+          "voice"
+        ]
+      }
+    },
+    {
+      "name": "Record",
+      "template": "Footage",
+      "timing": {
+        "phrase": "I recorded the narration first"
+      },
+      "props": {
+        "src": "fixtures/placeholder-footage.mp4",
+        "trimStart": 1,
+        "focus": {
+          "x": 0.5,
+          "y": 0.45
+        },
+        "zoom": {
+          "from": 1,
+          "to": 1.12
+        },
+        "dim": 0.15,
+        "label": "Step 1 · Record",
+        "loop": true,
+        "credit": "Placeholder footage — replace with your own clip"
+      }
+    },
+    {
+      "name": "Anchor",
+      "template": "KineticText",
+      "timing": {
+        "phrase": "Each scene is anchored"
+      },
+      "captions": false,
+      "props": {
+        "lines": [
+          "Every scene",
+          "starts on its word."
+        ],
+        "emphasis": [
+          "its word"
+        ]
+      }
+    },
+    {
+      "name": "Commands",
+      "template": "MetricCard",
+      "timing": {
+        "phrase": "From a recording"
+      },
+      "props": {
+        "label": "Commands from recording to render",
+        "value": 3,
+        "context": "transcribe → stills → render",
+        "annotate": true,
+        "source": "3gp README (npm run transcribe / stills / render)"
+      }
+    },
+    {
+      "name": "One clock",
+      "template": "Footage",
+      "timing": {
+        "phrase": "The footage, the graphics"
+      },
+      "props": {
+        "src": "fixtures/placeholder-footage.mp4",
+        "trimStart": 4,
+        "focus": {
+          "x": 0.85,
+          "y": 0.15
+        },
+        "zoom": {
+          "from": 1.35,
+          "to": 1.1
+        },
+        "pan": {
+          "x": -0.03,
+          "y": 0.02
+        },
+        "label": "One clock",
+        "loop": true,
+        "credit": "Placeholder footage — replace with your own clip"
+      }
+    },
+    {
+      "name": "Re-record",
+      "template": "KineticText",
+      "timing": {
+        "phrase": "And if I record"
+      },
+      "captions": false,
+      "props": {
+        "lines": [
+          "Re-record a line.",
+          "Every scene follows."
+        ],
+        "emphasis": [
+          "follows"
+        ]
+      }
+    },
+    {
+      "name": "Sign-off",
+      "template": "LogoReveal",
+      "timing": {
+        "phrase": "Voice first"
+      },
+      "captions": false,
+      "props": {
+        "wordmark": "3gp",
+        "tagline": "Voice first. Then everything else."
+      }
+    }
+  ],
+  "variants": [
+    {
+      "id": "p002-voice-first-demo-vertical",
+      "format": "vertical"
+    }
+  ]
+}

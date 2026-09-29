@@ -7,13 +7,15 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { activeTokenIndex, pageWindows } from "../lib/caption-timing";
 import { useLayout } from "../lib/layout";
 import { useTheme } from "../styles";
 
 /**
  * Word-timed captions in pages (TikTok style). Input is the standard
- * @remotion/captions `Caption[]` — produced by tools/captions or Whisper.
- * The active word gets the theme accent.
+ * @remotion/captions `Caption[]` — from a voice-over transcript
+ * (`transcriptToCaptions`), an SRT file, or inline data.
+ * The word being spoken gets the theme's emphasis.
  */
 export const Captions: React.FC<{
   captions: Caption[];
@@ -21,31 +23,36 @@ export const Captions: React.FC<{
   combineMs?: number;
   position?: "bottom" | "center";
   size?: number;
-}> = ({ captions, combineMs = 1200, position = "bottom", size = 64 }) => {
+  /** Draw a backing plate so captions read over footage. */
+  plate?: boolean;
+}> = ({
+  captions,
+  combineMs = 1200,
+  position = "bottom",
+  size = 64,
+  plate = false,
+}) => {
   const { fps } = useVideoConfig();
-  const { pages } = useMemo(
+  const pages = useMemo(
     () =>
       createTikTokStyleCaptions({
         captions,
         combineTokensWithinMilliseconds: combineMs,
-      }),
+      }).pages,
     [captions, combineMs],
   );
+  const windows = useMemo(() => pageWindows(pages, fps), [pages, fps]);
 
   return (
     <AbsoluteFill>
       {pages.map((page, i) => {
-        const next = pages[i + 1];
-        const from = Math.round((page.startMs / 1000) * fps);
-        const end = next
-          ? Math.round((next.startMs / 1000) * fps)
-          : Math.round(((page.startMs + page.durationMs) / 1000) * fps);
-        if (end - from <= 0) return null;
+        const { from, durationInFrames } = windows[i];
+        if (durationInFrames <= 0) return null;
         return (
           <Sequence
             key={i}
             from={from}
-            durationInFrames={end - from}
+            durationInFrames={durationInFrames}
             layout="none"
           >
             <CaptionPage
@@ -53,6 +60,7 @@ export const Captions: React.FC<{
               pageStartMs={page.startMs}
               position={position}
               size={size}
+              plate={plate}
             />
           </Sequence>
         );
@@ -66,39 +74,50 @@ const CaptionPage: React.FC<{
   pageStartMs: number;
   position: "bottom" | "center";
   size: number;
-}> = ({ tokens, pageStartMs, position, size }) => {
+  plate: boolean;
+}> = ({ tokens, pageStartMs, position, size, plate }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const theme = useTheme();
-  const { u, safe } = useLayout();
+  const { u, safe, isVertical, height } = useLayout();
   const nowMs = pageStartMs + (frame / fps) * 1000;
+  const active = activeTokenIndex(tokens, nowMs);
+  const highlighter = theme.emphasis === "highlighter";
+  // Vertical: stay above the bottom ~22% where platform UI (buttons, handle) sits.
+  const bottom = isVertical ? height * 0.22 : safe.y * 1.1;
 
   return (
     <AbsoluteFill
       style={{
         justifyContent: position === "bottom" ? "flex-end" : "center",
         alignItems: "center",
-        padding: `${safe.y * 1.8}px ${safe.x}px`,
+        padding: `${safe.y}px ${safe.x}px ${position === "bottom" ? bottom : safe.y}px`,
       }}
     >
       <div
         style={{
+          maxWidth: isVertical ? "100%" : u(1500),
           fontFamily: theme.fonts.display,
           fontWeight: theme.display.weight,
           textTransform: theme.display.uppercase ? "uppercase" : "none",
           fontSize: u(size),
-          lineHeight: 1.15,
+          lineHeight: 1.25,
           textAlign: "center",
           whiteSpace: "pre-wrap",
+          overflowWrap: "break-word",
           color: theme.colors.text,
+          background: plate ? theme.colors.background : undefined,
+          padding: plate ? `${u(14)}px ${u(28)}px` : undefined,
+          borderRadius: plate ? Math.min(theme.radius, u(12)) : undefined,
+          boxShadow: plate ? theme.shadow : undefined,
           textShadow:
-            theme.texture === "paper"
+            plate || theme.texture === "paper"
               ? "none"
               : `0 ${u(4)}px ${u(18)}px rgba(0,0,0,0.55)`,
         }}
       >
         {tokens.map((t, i) => {
-          const active = nowMs >= t.fromMs && nowMs < t.toMs;
+          const on = i === active;
           // Tokens carry their leading space (" word"); keep it outside the highlight.
           const lead = t.text.match(/^\s*/)?.[0] ?? "";
           return (
@@ -106,18 +125,17 @@ const CaptionPage: React.FC<{
               {lead}
               <span
                 style={{
-                  color: active
-                    ? theme.emphasis === "highlighter"
+                  color: on
+                    ? highlighter
                       ? theme.colors.onAccent
                       : theme.colors.accent
                     : undefined,
                   background:
-                    active && theme.emphasis === "highlighter"
-                      ? theme.colors.accent
-                      : undefined,
-                  padding:
-                    active && theme.emphasis === "highlighter"
-                      ? `0 ${u(8)}px`
+                    on && highlighter ? theme.colors.accent : undefined,
+                  // box-shadow (not padding) so highlighting never reflows the line
+                  boxShadow:
+                    on && highlighter
+                      ? `0 0 0 ${u(6)}px ${theme.colors.accent}`
                       : undefined,
                 }}
               >

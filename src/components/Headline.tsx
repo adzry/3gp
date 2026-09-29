@@ -28,6 +28,8 @@ export const Headline: React.FC<{
         fontSize: u(size),
         textAlign: align,
         maxWidth: maxWidth ? u(maxWidth) : undefined,
+        // Even line lengths — no single orphaned word on the last line.
+        textWrap: "balance",
       }}
     />
   );

@@ -14,10 +14,15 @@
     "stills": "node tools/render.mjs --stills",
     "captions:srt": "node tools/captions/srt-to-json.mjs",
     "media": "node tools/media/media.mjs",
+    "music": "node tools/audio/music.mjs",
+    "transcribe": "node tools/captions/transcribe.mjs",
+    "transcript": "node tools/captions/transcript.mjs",
+    "fixtures": "node tools/render.mjs fixture-footage --out public/fixtures/placeholder-footage.mp4",
     "typecheck": "tsc",
-    "check": "eslint src projects && tsc && node tools/validate.mjs",
+    "check": "eslint src projects && tsc && node --test \"tests/*.test.mjs\" && node tools/validate.mjs",
     "skills": "npx -y skills add remotion-dev/skills -a claude-code -s '*' -y --copy",
-    "setup": "bash tools/setup.sh"
+    "setup": "bash tools/setup.sh",
+    "test": "node --test \"tests/*.test.mjs\""
   },
   "sideEffects": [
     "*.css"
@@ -31,14 +36,20 @@
     "@remotion/cli": "4.0.529",
     "@remotion/fonts": "4.0.529",
     "@remotion/media": "4.0.529",
+    "d3-geo": "3.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.529",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2",
     "zod": "4.5.4"
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.529",
+    "@remotion/install-whisper-cpp": "4.0.529",
+    "@types/d3-geo": "3.1.1",
     "@types/react": "19.2.7",
+    "@types/topojson-client": "3.1.5",
     "@types/web": "0.0.166",
     "eslint": "9.19.0",
     "prettier": "3.8.1",

@@ -32,3 +32,22 @@ export const BackgroundMedia: React.FC<{ src: string; dim?: number }> = ({
 );
 
 export const resolveSrc = resolve;
+
+/** Image or (muted, looping) video that fills its box — for panels and cards. */
+export const InlineMedia: React.FC<{
+  src: string;
+  style?: React.CSSProperties;
+}> = ({ src, style }) =>
+  isVideo(src) ? (
+    <div style={{ overflow: "hidden", ...style }}>
+      <Video
+        src={resolve(src)}
+        muted
+        loop
+        objectFit="cover"
+        style={{ width: "100%", height: "100%" }}
+      />
+    </div>
+  ) : (
+    <Img src={resolve(src)} style={{ objectFit: "cover", ...style }} />
+  );

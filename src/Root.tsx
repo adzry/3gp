@@ -1,6 +1,7 @@
 import React from "react";
 import { Composition, Folder } from "remotion";
 import { PROJECTS } from "../projects";
+import { PlaceholderFootage } from "./fixtures/PlaceholderFootage";
 import { SAMPLES } from "./templates/samples";
 import { SceneVideo, calculateVideoMetadata } from "./video/SceneVideo";
 import {
@@ -24,6 +25,9 @@ const VideoComposition: React.FC<{ video: VideoProps }> = ({ video }) => (
     height={1080}
   />
 );
+
+// Footage's sample needs the generated fixture clip; keep the galleries self-contained.
+const GALLERY = SAMPLES.filter((s) => s.template !== "Footage");
 
 export const RemotionRoot: React.FC = () => {
   const projects = PROJECTS.flatMap((file) =>
@@ -55,7 +59,7 @@ export const RemotionRoot: React.FC = () => {
             id: "gallery-studio",
             title: "All templates",
             theme: "studio",
-            scenes: SAMPLES,
+            scenes: GALLERY,
           }}
         />
         <VideoComposition
@@ -63,8 +67,19 @@ export const RemotionRoot: React.FC = () => {
             id: "gallery-vox-editorial",
             title: "All templates",
             theme: "vox-editorial",
-            scenes: SAMPLES,
+            scenes: GALLERY,
           }}
+        />
+      </Folder>
+      <Folder name="fixtures">
+        {/* Test pattern for the Footage template — `npm run fixtures` renders it to public/fixtures/. */}
+        <Composition
+          id="fixture-footage"
+          component={PlaceholderFootage}
+          durationInFrames={360}
+          fps={30}
+          width={1920}
+          height={1080}
         />
       </Folder>
     </>

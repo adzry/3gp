@@ -6,6 +6,7 @@ import { Kicker } from "../components/Kicker";
 import { Reveal } from "../components/Reveal";
 import { Stage } from "../components/Stage";
 import { useLayout } from "../lib/layout";
+import { useStrings } from "../lib/strings";
 import { useTheme } from "../styles";
 import type { metricCardSchema } from "./schemas";
 
@@ -69,6 +70,7 @@ export const MetricCard: React.FC<z.input<typeof metricCardSchema>> = ({
 
 export const SourceLine: React.FC<{ text: string }> = ({ text }) => {
   const theme = useTheme();
+  const t = useStrings();
   const { u, safe } = useLayout();
   return (
     <div
@@ -81,7 +83,7 @@ export const SourceLine: React.FC<{ text: string }> = ({ text }) => {
         fontFamily: theme.fonts.body,
       }}
     >
-      Source: {text}
+      {t.source}: {text}
     </div>
   );
 };
