@@ -6,6 +6,7 @@
  * Pure zod with explicit .ts imports so Node tools can import it directly.
  */
 import { z } from "zod";
+import { zLang } from "../lib/lang.ts";
 import { zThemeName } from "../styles/names.ts";
 import * as T from "../templates/schemas.ts";
 import { transcriptSchema } from "./transcript.ts";
@@ -94,6 +95,8 @@ export const videoSchema = z.object({
   fps: z.number().int().positive().default(30),
   format: z.enum(["landscape", "vertical", "square"]).default("landscape"),
   theme: zThemeName.default("studio"),
+  /** Language of text templates print themselves ("Source:", map notes). */
+  lang: zLang.default("en"),
   /** Music bed for the whole video (path in public/). See src/video/music.ts. */
   audio: z
     .object({

@@ -32,6 +32,14 @@
         "vox-editorial"
       ]
     },
+    "lang": {
+      "default": "en",
+      "type": "string",
+      "enum": [
+        "en",
+        "ms"
+      ]
+    },
     "audio": {
       "type": "object",
       "properties": {

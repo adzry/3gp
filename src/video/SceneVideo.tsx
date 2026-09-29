@@ -11,6 +11,7 @@ import { Captions } from "../components/Captions";
 import { SceneShell } from "../components/SceneShell";
 import { resolveSrc } from "../components/Media";
 import { loadFonts } from "../lib/fonts";
+import { LangProvider } from "../lib/strings";
 import { THEMES, ThemeProvider } from "../styles";
 import { TEMPLATES } from "../templates";
 import { SceneDurationContext } from "./scene-context";
@@ -53,70 +54,72 @@ export const SceneVideo: React.FC<VideoProps> = (video) => {
   );
 
   return (
-    <ThemeProvider name={theme}>
-      <AbsoluteFill
-        style={{ backgroundColor: THEMES[theme].colors.background }}
-      >
-        {scenes.map((scene, i) => {
-          const { startFrame, durationInFrames } = timeline.scenes[i];
-          const Template = TEMPLATES[scene.template] as React.FC<
-            typeof scene.props
-          >;
-          return (
-            <Sequence
-              key={i}
-              from={startFrame}
-              durationInFrames={durationInFrames}
-              name={scene.name ?? `${i + 1}. ${scene.template}`}
-            >
-              <ThemeProvider name={scene.theme ?? theme}>
-                <SceneDurationContext.Provider value={durationInFrames}>
-                  <SceneShell
-                    durationInFrames={durationInFrames}
-                    isFirst={i === 0}
-                    isLast={i === scenes.length - 1}
-                  >
-                    <Template {...scene.props} />
-                  </SceneShell>
-                </SceneDurationContext.Provider>
-              </ThemeProvider>
-            </Sequence>
-          );
-        })}
-        {captions && captions.enabled !== false && captionData.length ? (
-          <SceneCaptionsGate video={video} timeline={timeline}>
-            <Captions
-              captions={captionData}
-              position={captions.position}
-              size={captions.size}
-              combineMs={captions.combineMs}
-              plate
-            />
-          </SceneCaptionsGate>
-        ) : null}
-        {audio ? (
-          <Audio
-            src={resolveSrc(audio.src)}
-            name="Music"
-            loop={audio.loop ?? true}
-            trimBefore={Math.round((audio.trimStart ?? 0) * timeline.fps)}
-            volume={(f) => musicVolume(f)}
-          />
-        ) : null}
-        {voiceover && !voiceover.mute ? (
-          <Sequence
-            from={Math.round((voiceover.offset ?? 0) * timeline.fps)}
-            name="Voice-over"
-            layout="none"
-          >
+    <LangProvider lang={video.lang ?? "en"}>
+      <ThemeProvider name={theme}>
+        <AbsoluteFill
+          style={{ backgroundColor: THEMES[theme].colors.background }}
+        >
+          {scenes.map((scene, i) => {
+            const { startFrame, durationInFrames } = timeline.scenes[i];
+            const Template = TEMPLATES[scene.template] as React.FC<
+              typeof scene.props
+            >;
+            return (
+              <Sequence
+                key={i}
+                from={startFrame}
+                durationInFrames={durationInFrames}
+                name={scene.name ?? `${i + 1}. ${scene.template}`}
+              >
+                <ThemeProvider name={scene.theme ?? theme}>
+                  <SceneDurationContext.Provider value={durationInFrames}>
+                    <SceneShell
+                      durationInFrames={durationInFrames}
+                      isFirst={i === 0}
+                      isLast={i === scenes.length - 1}
+                    >
+                      <Template {...scene.props} />
+                    </SceneShell>
+                  </SceneDurationContext.Provider>
+                </ThemeProvider>
+              </Sequence>
+            );
+          })}
+          {captions && captions.enabled !== false && captionData.length ? (
+            <SceneCaptionsGate video={video} timeline={timeline}>
+              <Captions
+                captions={captionData}
+                position={captions.position}
+                size={captions.size}
+                combineMs={captions.combineMs}
+                plate
+              />
+            </SceneCaptionsGate>
+          ) : null}
+          {audio ? (
             <Audio
-              src={resolveSrc(voiceover.src)}
-              volume={() => voiceover.volume ?? 1}
+              src={resolveSrc(audio.src)}
+              name="Music"
+              loop={audio.loop ?? true}
+              trimBefore={Math.round((audio.trimStart ?? 0) * timeline.fps)}
+              volume={(f) => musicVolume(f)}
             />
-          </Sequence>
-        ) : null}
-      </AbsoluteFill>
-    </ThemeProvider>
+          ) : null}
+          {voiceover && !voiceover.mute ? (
+            <Sequence
+              from={Math.round((voiceover.offset ?? 0) * timeline.fps)}
+              name="Voice-over"
+              layout="none"
+            >
+              <Audio
+                src={resolveSrc(voiceover.src)}
+                volume={() => voiceover.volume ?? 1}
+              />
+            </Sequence>
+          ) : null}
+        </AbsoluteFill>
+      </ThemeProvider>
+    </LangProvider>
   );
 };
 

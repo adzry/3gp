@@ -18,6 +18,7 @@ import { Stage } from "../components/Stage";
 import { detailFor, formatKm, greatCircleKm } from "../lib/geo";
 import { placeLabels } from "../lib/labels";
 import { useLayout } from "../lib/layout";
+import { useStrings } from "../lib/strings";
 import { useTheme } from "../styles";
 import { useSceneDuration } from "../video/scene-context";
 import { SourceLine } from "./MetricCard";
@@ -63,6 +64,7 @@ export const MapRoute: React.FC<z.input<typeof mapRouteSchema>> = ({
   const duration = useSceneDuration();
   const { u, width, height, safe, isVertical } = useLayout();
   const ink = theme.texture === "paper";
+  const strings = useStrings();
 
   const detail = detailFor(stops);
   // Default props (e.g. `highlight = []`) are new arrays every frame, so the
@@ -352,12 +354,7 @@ export const MapRoute: React.FC<z.input<typeof mapRouteSchema>> = ({
       ) : null}
       {source || showDistance ? (
         <SourceLine
-          text={[
-            source,
-            showDistance
-              ? "distance = great-circle, computed from coordinates"
-              : null,
-          ]
+          text={[source, showDistance ? strings.distanceNote : null]
             .filter(Boolean)
             .join(" · ")}
         />

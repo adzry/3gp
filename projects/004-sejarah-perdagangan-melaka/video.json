@@ -1,0 +1,125 @@
+{
+  "$schema": "../../schemas/video.schema.json",
+  "id": "p004-sejarah-perdagangan-melaka",
+  "title": "Sejarah perdagangan Melaka",
+  "fps": 30,
+  "format": "landscape",
+  "theme": "vox-editorial",
+  "lang": "ms",
+  "audio": {
+    "src": "projects/004-sejarah-perdagangan-melaka/music.generated.wav",
+    "volume": 0.55,
+    "fadeIn": 1.5,
+    "fadeOut": 3
+  },
+  "scenes": [
+    {
+      "name": "Soalan",
+      "template": "TitleCard",
+      "seconds": 4.5,
+      "props": {
+        "kicker": "Sejarah",
+        "title": "Bagaimana Melaka menjadi pelabuhan dunia",
+        "emphasis": ["pelabuhan dunia"]
+      }
+    },
+    {
+      "name": "Asal-usul",
+      "template": "TitleCard",
+      "seconds": 4.5,
+      "props": {
+        "kicker": "Sekitar 1400",
+        "title": "Parameswara mengasaskan Melaka",
+        "subtitle": "Di muara Sungai Bertam, di tepi selat yang dilalui kapal dari barat dan timur.",
+        "emphasis": ["Melaka"]
+      }
+    },
+    {
+      "name": "Monsun",
+      "template": "KineticText",
+      "seconds": 5,
+      "props": {
+        "lines": ["Angin monsun bertukar arah mengikut musim.", "Kapal menunggu di Melaka."],
+        "emphasis": ["menunggu"],
+        "size": 120
+      }
+    },
+    {
+      "name": "Zheng He",
+      "template": "MapRoute",
+      "seconds": 6.5,
+      "props": {
+        "title": "Laluan armada Zheng He, 1405–1433",
+        "stops": [
+          { "name": "Melaka", "lon": 102.2501, "lat": 2.1896 },
+          { "name": "Calicut", "lon": 75.7804, "lat": 11.2588 },
+          { "name": "Hormuz", "lon": 56.46, "lat": 27.06 }
+        ],
+        "path": "arc",
+        "source": "peta Natural Earth"
+      }
+    },
+    {
+      "name": "Barang dagangan",
+      "template": "KineticText",
+      "seconds": 6,
+      "props": {
+        "lines": ["Kain dari Gujarat dan Benggala.", "Sutera dan tembikar dari China.", "Rempah dari Maluku."],
+        "emphasis": ["Rempah"],
+        "size": 110
+      }
+    },
+    {
+      "name": "Tomé Pires",
+      "template": "QuoteCard",
+      "seconds": 6,
+      "props": {
+        "quote": "Whoever is lord of Malacca has his hand on the throat of Venice.",
+        "author": "Tomé Pires",
+        "source": "Suma Oriental, c. 1512–1515",
+        "emphasis": ["throat of Venice"]
+      }
+    },
+    {
+      "name": "1511",
+      "template": "MapRoute",
+      "seconds": 6,
+      "props": {
+        "title": "April 1511: Albuquerque belayar dari Goa",
+        "stops": [
+          { "name": "Goa", "lon": 73.8278, "lat": 15.4909 },
+          { "name": "Melaka", "lon": 102.2501, "lat": 2.1896 }
+        ],
+        "path": "arc",
+        "source": "peta Natural Earth"
+      }
+    },
+    {
+      "name": "Bertukar tangan",
+      "template": "KineticText",
+      "seconds": 6,
+      "props": {
+        "lines": ["1511 — Portugis", "1641 — Belanda", "1824 — British"],
+        "emphasis": ["1511"],
+        "size": 130
+      }
+    },
+    {
+      "name": "Penutup",
+      "template": "EndCard",
+      "seconds": 5.5,
+      "props": {
+        "headline": "Selat yang sempit, laluan dunia",
+        "subline": "Sejarah perdagangan Melaka",
+        "credits": [
+          "Sumber: Wikipedia (Kesultanan Melaka, Portugis Melaka, Pengepungan Melaka 1641, Negeri-Negeri Selat); Britannica (Afonso de Albuquerque); NLB Singapura (Perjanjian Inggeris-Belanda 1824)",
+          "Petikan: Tomé Pires, Suma Oriental (terj. A. Cortesão)",
+          "Peta: Natural Earth (domain awam) · Muzik: dijana oleh 3gp"
+        ]
+      }
+    }
+  ],
+  "variants": [
+    { "id": "p004-sejarah-perdagangan-melaka-vertical", "format": "vertical" }
+  ]
+}

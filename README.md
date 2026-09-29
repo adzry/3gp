@@ -218,6 +218,11 @@ the `gallery-studio` / `gallery-vox-editorial` compositions).
 Per-scene override: `"theme": "studio"` on any scene. Specs:
 `src/styles/<name>/STYLE.md`.
 
+**Language:** `"lang": "ms"` (or `"en"`, the default) in `video.json` sets the
+text templates print themselves — "Sumber:" instead of "Source:", map
+distance notes. Everything else comes from your props, in any language.
+Add a language in `src/lib/lang.ts`.
+
 ## Recipes
 
 Explainer · Documentary · Product launch · Social short · Vox/editorial —
