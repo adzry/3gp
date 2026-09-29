@@ -107,11 +107,13 @@ export const resolveTimeline = (
     }
     if ("words" in timing) {
       const [a, b] = timing.words;
-      if (a > b)
+      if (a > b) {
         errors.push(
           `${where}: timing.words [${a}, ${b}] — start index is after end index`,
         );
-      if (b >= words.length) {
+        return { kind: "seconds", frames: fps };
+      }
+      if (a < 0 || b >= words.length) {
         errors.push(
           `${where}: timing.words [${a}, ${b}] is outside the transcript (words 0–${words.length - 1})`,
         );
@@ -127,11 +129,13 @@ export const resolveTimeline = (
     }
     if ("segments" in timing) {
       const [a, b] = timing.segments;
-      if (a > b)
+      if (a > b) {
         errors.push(
           `${where}: timing.segments [${a}, ${b}] — start index is after end index`,
         );
-      if (b >= segments.length) {
+        return { kind: "seconds", frames: fps };
+      }
+      if (a < 0 || b >= segments.length) {
         errors.push(
           `${where}: timing.segments [${a}, ${b}] is outside the transcript (segments 0–${segments.length - 1})`,
         );

@@ -158,6 +158,19 @@ test("error: segment range outside the transcript / reversed range", () => {
   );
 });
 
+test("error: out-of-range or reversed ranges never crash", () => {
+  for (const timing of [
+    { words: [5, 1] },
+    { words: [99, 100] },
+    { segments: [9, 1] },
+    { segments: [7, 8] },
+  ]) {
+    const v = makeVideo([{ timing }], { voiceover: VO });
+    const t = resolveTimeline(v, T);
+    assert.ok(t.errors.length >= 1, JSON.stringify(timing));
+  }
+});
+
 test("error: anchors out of spoken order give a scene no time", () => {
   const v = makeVideo(
     [

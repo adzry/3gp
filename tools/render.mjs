@@ -65,14 +65,13 @@ if (!project) {
 // Which transcript? --transcript file > --draft > the project's own.
 const raw = JSON.parse(fs.readFileSync(project.file, "utf8"));
 let override;
-if (flags.transcript) override = flags.transcript;
-else if (flags.draft) {
-  if (!raw.voiceover) {
-    console.error(`${project.folder} has no voiceover — --draft doesn't apply`);
-    process.exit(1);
-  }
-  override = draftPathFor(raw.voiceover.transcript);
+if ((flags.transcript || flags.draft) && !raw.voiceover) {
+  const flag = flags.transcript ? "--transcript" : "--draft";
+  console.error(`${project.folder} has no voiceover — ${flag} doesn't apply`);
+  process.exit(1);
 }
+if (flags.transcript) override = flags.transcript;
+else if (flags.draft) override = draftPathFor(raw.voiceover.transcript);
 
 const check = await checkProject(project.file, { transcript: override });
 for (const w of check.warnings) console.log(`⚠ ${w}`);

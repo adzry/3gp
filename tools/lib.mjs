@@ -259,6 +259,10 @@ export const checkProject = async (file, opts = {}) => {
       for (const w of t.warnings)
         if (!out.warnings.includes(w)) out.warnings.push(w);
     }
+  } else if (!vo) {
+    out.errors.push(
+      'scenes use voice timing (words/segments/phrase) but the video has no "voiceover" — add one, or time those scenes with seconds/from–to',
+    );
   }
   out.ok = out.errors.length === 0;
   return out;
