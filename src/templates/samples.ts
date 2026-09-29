@@ -153,6 +153,20 @@ export const SAMPLES: Scene[] = [
     },
   },
   {
+    template: "MapRoute",
+    seconds: 6,
+    props: {
+      title: "Kuala Lumpur to London",
+      stops: [
+        { name: "Kuala Lumpur", lon: 101.6869, lat: 3.139 },
+        { name: "Dubai", lon: 55.2708, lat: 25.2048 },
+        { name: "London", lon: -0.1276, lat: 51.5072 },
+      ],
+      highlight: ["Malaysia", "United Kingdom"],
+      source: "Map: Natural Earth (public domain)",
+    },
+  },
+  {
     template: "EndCard",
     seconds: 4,
     props: {

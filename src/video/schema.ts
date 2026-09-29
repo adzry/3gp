@@ -69,6 +69,7 @@ export const sceneSchema = z.discriminatedUnion("template", [
   scene("LineChart", T.lineChartSchema),
   scene("Comparison", T.comparisonSchema),
   scene("EndCard", T.endCardSchema),
+  scene("MapRoute", T.mapRouteSchema),
 ]);
 
 export type Scene = z.input<typeof sceneSchema>;

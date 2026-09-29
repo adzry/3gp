@@ -189,3 +189,27 @@ export const endCardSchema = z.object({
   /** Credits / attributions, one per line (e.g. required by stock licences). */
   credits: z.array(z.string()).max(12).default([]),
 });
+
+export const mapRouteSchema = z.object({
+  title: z.string().optional(),
+  /** 2–8 stops in travel order. Coordinates in decimal degrees (WGS84). */
+  stops: z
+    .array(
+      z.object({
+        name: z.string(),
+        lon: z.number().min(-180).max(180),
+        lat: z.number().min(-85).max(85),
+      }),
+    )
+    .min(2)
+    .max(8),
+  /** arc = great-circle path (flights, shipping); line = straight on the map. */
+  path: z.enum(["arc", "line"]).default("arc"),
+  /** Country names to tint (Natural Earth names, e.g. "Malaysia", "United Kingdom"). */
+  highlight: z.array(z.string()).default([]),
+  /** Show the computed great-circle distance of the route. */
+  showDistance: z.boolean().default(true),
+  /** Extra room around the stops (fraction of the route's size). */
+  padding: z.number().min(0).max(2).default(0.35),
+  source: z.string().optional(),
+});

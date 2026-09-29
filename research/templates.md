@@ -69,5 +69,11 @@ CaptionedShort · LogoReveal. "Product promo" is a **recipe** composed from
 these (`recipes/product-launch.md`), not a monolithic template.
 
 Added since: `Footage` (trim, focus-crop, zoom/pan), `LineChart`,
-`Comparison`, `EndCard`. Remaining candidates: `MapRoute` (via
-`/remotion-maps`), `Audiogram`.
+`Comparison`, `EndCard`, `MapRoute`. Remaining candidate: `Audiogram`.
+
+**MapRoute choice:** the official `/remotion-maps` techniques all need a
+pre-exported map image or live tile servers (Mapbox/MapLibre/MapTiler/Cesium).
+3gp renders offline and themes everything, so MapRoute draws Natural Earth
+vectors (public domain, via `world-atlas`) with `d3-geo` itself: no network,
+no API key, deterministic, and it restyles with the theme. Use a tile-based
+technique only when a shot needs satellite imagery, streets or 3D terrain.

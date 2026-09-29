@@ -25,6 +25,9 @@ import · `Not used`.
 | `@remotion/media` | Library | npm | `<Audio>`, `<Video>` (current recommended API) | No licence field → treat as Remotion License | **Core** |
 | `@remotion/transitions` | Library | npm | `TransitionSeries` | npm field "UNLICENSED" → treat as Remotion License | Not used yet (custom `SceneShell`) |
 | `@remotion/three` | Library | npm | React Three Fiber in Remotion | Remotion License | Secondary (install per project) |
+| `d3-geo` 3.1.1 | Library | npm | Map projections, great-circle paths (MapRoute) | ISC (npm field) | **Core** |
+| `topojson-client` 3.1.0 | Library | npm | TopoJSON → GeoJSON (MapRoute) | ISC (npm field) | **Core** |
+| `world-atlas` 2.0.2 | Map data | https://github.com/topojson/world-atlas | Natural Earth 1:110m / 1:50m countries as TopoJSON | ISC (package); data: Natural Earth — public domain ("Everything here is public domain", nvkelso/natural-earth-vector LICENSE.md, verified 2026-09-29) | **Core** |
 | `@remotion/lottie` | Library | npm | Lottie playback | Remotion License | Secondary |
 | `@remotion/install-whisper-cpp` 4.0.529 | Tool | npm | Builds whisper.cpp, downloads models, runs transcription | MIT (npm field) | **Installed** (devDependency, used by `npm run transcribe`) |
 | whisper.cpp 1.5.5 | Transcription engine | https://github.com/ggml-org/whisper.cpp | Local speech-to-text with token timestamps | MIT (LICENSE) | **Core for voice-first** — built into `.cache/whisper.cpp` (git-ignored) |

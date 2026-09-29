@@ -52,7 +52,7 @@ tools auto-detect Playwright's under `PLAYWRIGHT_BROWSERS_PATH`).
 │   │                          transcript.ts (format), timeline.ts (seconds/voice → frames)
 │   ├── templates/             TitleCard, KineticText, LowerThird, QuoteCard,
 │   │                          MetricCard, BarChart, LineChart, Comparison,
-│   │                          CaptionedShort, EndCard, LogoReveal, Footage
+│   │                          CaptionedShort, EndCard, LogoReveal, Footage, MapRoute
 │   │                          + schemas.ts (zod) + samples.ts (gallery/examples)
 │   ├── components/            Stage, Reveal, WordReveal, Headline, Emphasis,
 │   │                          CountUp, HandCircle, Captions, Kicker, Media, SceneShell
@@ -201,6 +201,7 @@ you've verified.
 | `LineChart` | Trends over time / ordered steps (2–24 points) | `title`, `data[{label,value}]`, `unit`, `highlight`, `annotation`, `zeroBased`, `source` |
 | `Comparison` | Before/after, A vs B | `title`, `left`/`right` `{label,title,points[],media}`, `winner` |
 | `EndCard` | Closing CTA + credits/attributions | `headline`, `subline`, `credits[]` |
+| `MapRoute` | Journeys: flights, trade routes, trips (offline vector map) | `title`, `stops[{name,lon,lat}]`, `path` (arc\|line), `highlight[]` (country names), `showDistance`, `padding`, `source` |
 | `Footage` | A clip or still, any aspect ratio | `src`, `trimStart`, `fit`, `focus{x,y}` (crop), `zoom{from,to}`, `pan{x,y}`, `loop`, `dim`, `label`, `credit` |
 
 Full schemas: `src/templates/schemas.ts`. Working examples of every template:

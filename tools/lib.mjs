@@ -22,6 +22,38 @@ export const draftPathFor = (p) =>
     .replace(/(\.json)?$/, ".draft.json")
     .replace(".json.draft.json", ".draft.json");
 
+/** Common short names → Natural Earth names, for validation hints. */
+const COUNTRY_ALIASES = {
+  uk: "United Kingdom",
+  "great britain": "United Kingdom",
+  britain: "United Kingdom",
+  us: "United States of America",
+  usa: "United States of America",
+  "united states": "United States of America",
+  uae: "United Arab Emirates",
+  drc: "Dem. Rep. Congo",
+  "south korea": "South Korea",
+  "north korea": "North Korea",
+};
+
+/** Natural Earth country names (as used by MapRoute `highlight`). */
+let _countries = null;
+export const countryNames = () => {
+  if (!_countries) {
+    const topo = JSON.parse(
+      // 1:50m is a superset of 1:110m (includes small countries like Singapore).
+      fs.readFileSync(
+        path.join(ROOT, "node_modules/world-atlas/countries-50m.json"),
+        "utf8",
+      ),
+    );
+    _countries = topo.objects.countries.geometries
+      .map((g) => g.properties.name)
+      .sort();
+  }
+  return _countries;
+};
+
 export const sha256File = (file) =>
   crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 
@@ -182,6 +214,36 @@ export const checkProject = async (file, opts = {}) => {
       }
     } catch (e) {
       out.errors.push(`${path.relative(ROOT, transcriptFile)}: ${e.message}`);
+    }
+  }
+
+  // MapRoute: country names must exist in the Natural Earth data.
+  const mapScenes = v.data.scenes
+    .map((s, i) => [s, i])
+    .filter(([s]) => s.template === "MapRoute" && s.props.highlight?.length);
+  if (mapScenes.length) {
+    const names = new Set(countryNames().map((n) => n.toLowerCase()));
+    for (const [s, i] of mapScenes) {
+      for (const h of s.props.highlight) {
+        if (!names.has(h.toLowerCase())) {
+          const alias = COUNTRY_ALIASES[h.toLowerCase().replace(/\./g, "")];
+          const near = alias
+            ? [alias]
+            : countryNames().filter((n) =>
+                n.toLowerCase().includes(h.toLowerCase().slice(0, 4)),
+              );
+          out.errors.push(
+            `scenes.${i}.props.highlight: unknown country "${h}"${
+              near.length
+                ? ` — did you mean ${near
+                    .slice(0, 3)
+                    .map((n) => `"${n}"`)
+                    .join(", ")}?`
+                : ""
+            }`,
+          );
+        }
+      }
     }
   }
 
