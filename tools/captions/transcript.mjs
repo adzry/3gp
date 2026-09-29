@@ -20,6 +20,7 @@ import {
   publicPath,
 } from "../lib.mjs";
 import { draftTranscript, extractVoLines } from "./draft-transcript.ts";
+import { sceneKind } from "../../src/video/schema.ts";
 import { flattenWords, parseTranscript } from "../../src/video/transcript.ts";
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
@@ -107,7 +108,7 @@ if (check) {
             .join(" ")
         : "—";
       console.log(
-        `  ${String(s.index + 1).padStart(2)}. ${fmt(s.startFrame / timeline.fps)}s +${(s.durationInFrames / timeline.fps).toFixed(2)}s  ${sc.template.padEnd(12)} words ${s.words ? s.words.join("–") : "—"}  “${text.length > 70 ? text.slice(0, 67) + "…" : text}”`,
+        `  ${String(s.index + 1).padStart(2)}. ${fmt(s.startFrame / timeline.fps)}s +${(s.durationInFrames / timeline.fps).toFixed(2)}s  ${sceneKind(sc).padEnd(14)} words ${s.words ? s.words.join("–") : "—"}  “${text.length > 70 ? text.slice(0, 67) + "…" : text}”`,
       );
     });
   }

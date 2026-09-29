@@ -5,40 +5,20 @@ import {
   geoPath,
   type GeoPermissibleObjects,
 } from "d3-geo";
-import type { Feature, Geometry } from "geojson";
 import React, { useMemo } from "react";
 import { Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { feature } from "topojson-client";
-import type { GeometryCollection, Topology } from "topojson-specification";
-import world110 from "world-atlas/countries-110m.json";
-import world50 from "world-atlas/countries-50m.json";
 import type { z } from "zod";
 import { Headline } from "../components/Headline";
 import { Stage } from "../components/Stage";
 import { detailFor, formatKm, greatCircleKm } from "../lib/geo";
 import { placeLabels } from "../lib/labels";
 import { useLayout } from "../lib/layout";
+import { COUNTRIES } from "../lib/world";
 import { useStrings } from "../lib/strings";
 import { useTheme } from "../styles";
 import { useSceneDuration } from "../video/scene-context";
 import { SourceLine } from "./MetricCard";
 import type { mapRouteSchema } from "./schemas";
-
-type CountryFeature = Feature<Geometry, { name: string }>;
-
-const countriesOf = (topology: unknown): CountryFeature[] => {
-  const t = topology as Topology<{
-    countries: GeometryCollection<{ name: string }>;
-  }>;
-  return (
-    feature(t, t.objects.countries) as unknown as { features: CountryFeature[] }
-  ).features;
-};
-// Parsed once per bundle, not per frame.
-const COUNTRIES = {
-  "110m": countriesOf(world110),
-  "50m": countriesOf(world50),
-};
 
 /** Natural Earth country names available for `highlight`. */
 export const COUNTRY_NAMES = COUNTRIES["110m"].map((c) => c.properties.name);

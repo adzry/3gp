@@ -3,6 +3,11 @@ import { Composition, Folder } from "remotion";
 import { PROJECTS } from "../projects";
 import { PlaceholderFootage } from "./fixtures/PlaceholderFootage";
 import { SAMPLES } from "./templates/samples";
+import {
+  CustomScenesContext,
+  EMPTY_SCENES,
+  type SceneRegistry,
+} from "./video/custom-scenes";
 import { SceneVideo, calculateVideoMetadata } from "./video/SceneVideo";
 import {
   expandProject,
@@ -11,10 +16,29 @@ import {
   type VideoProps,
 } from "./video/schema";
 
-const VideoComposition: React.FC<{ video: VideoProps }> = ({ video }) => (
+// One SceneVideo per scene registry, so each project sees its own custom scenes.
+const components = new Map<SceneRegistry, React.FC<VideoProps>>();
+const componentFor = (scenes: SceneRegistry) => {
+  let c = components.get(scenes);
+  if (!c) {
+    const WithScenes: React.FC<VideoProps> = (props) => (
+      <CustomScenesContext.Provider value={scenes}>
+        <SceneVideo {...props} />
+      </CustomScenesContext.Provider>
+    );
+    c = WithScenes;
+    components.set(scenes, c);
+  }
+  return c;
+};
+
+const VideoComposition: React.FC<{
+  video: VideoProps;
+  scenes?: SceneRegistry;
+}> = ({ video, scenes = EMPTY_SCENES }) => (
   <Composition
     id={video.id}
-    component={SceneVideo}
+    component={componentFor(scenes)}
     schema={videoSchema}
     defaultProps={video}
     calculateMetadata={calculateVideoMetadata}
@@ -30,14 +54,17 @@ const VideoComposition: React.FC<{ video: VideoProps }> = ({ video }) => (
 const GALLERY = SAMPLES.filter((s) => s.template !== "Footage");
 
 export const RemotionRoot: React.FC = () => {
-  const projects = PROJECTS.flatMap((file) =>
-    expandProject(projectFileSchema.parse(file)),
+  const projects = PROJECTS.flatMap(({ video, scenes }) =>
+    expandProject(projectFileSchema.parse(video)).map((v) => ({
+      video: v,
+      scenes,
+    })),
   );
   return (
     <>
       <Folder name="projects">
-        {projects.map((video) => (
-          <VideoComposition key={video.id} video={video} />
+        {projects.map(({ video, scenes }) => (
+          <VideoComposition key={video.id} video={video} scenes={scenes} />
         ))}
       </Folder>
       <Folder name="templates">

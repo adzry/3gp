@@ -33,6 +33,10 @@ export const collectMediaRefs = (video: VideoProps): MediaRef[] => {
   add(video.voiceover?.transcript, "json", "voiceover.transcript");
   video.scenes.forEach((scene, i) => {
     const at = `scenes.${i}.props`;
+    if ("custom" in scene) {
+      scanProps(scene.props, at, add);
+      return;
+    }
     switch (scene.template) {
       case "Footage":
         add(scene.props.src, "visual", `${at}.src`);
@@ -57,6 +61,37 @@ export const collectMediaRefs = (video: VideoProps): MediaRef[] => {
     }
   });
   return refs;
+};
+
+const ALL_EXTENSIONS: readonly string[] = Object.values(MEDIA_EXTENSIONS).flat();
+const kindOf = (p: string): Kind => {
+  const ext = p.split(".").pop()?.toLowerCase() ?? "";
+  if ((MEDIA_EXTENSIONS.audio as readonly string[]).includes(ext)) return "audio";
+  if (ext === "json") return "json";
+  return "visual";
+};
+
+/**
+ * Custom scenes have no fixed props, so any string that looks like a file —
+ * a media extension, or a path under projects/, public/ or fixtures/ — is
+ * treated as a media reference (path rules + existence).
+ */
+const scanProps = (
+  value: unknown,
+  where: string,
+  add: (path: string, kind: Kind, where: string) => void,
+) => {
+  if (typeof value === "string") {
+    const ext = /\.([a-z0-9]{2,5})$/i.exec(value)?.[1]?.toLowerCase();
+    const looksLikeFile =
+      (ext !== undefined && ALL_EXTENSIONS.includes(ext) && !/\s/.test(value)) ||
+      /^(\/?public\/|projects\/|fixtures\/)/.test(value);
+    if (looksLikeFile) add(value, kindOf(value), where);
+  } else if (Array.isArray(value)) {
+    value.forEach((v, i) => scanProps(v, `${where}.${i}`, add));
+  } else if (value && typeof value === "object") {
+    for (const [k, v] of Object.entries(value)) scanProps(v, `${where}.${k}`, add);
+  }
 };
 
 /** Path-shape problems (existence is checked by the Node tool). */

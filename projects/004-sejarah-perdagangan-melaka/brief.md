@@ -33,6 +33,7 @@ results citing them, plus Britannica, NLB Singapore, Encyclopedia.com/EBSCO).
 | 1641 Dutch (with Johor) captured Melaka, 14 Jan 1641 | Wikipedia, *Siege of Malacca (1640–1641)* |
 | 1824 Anglo-Dutch Treaty ceded Melaka to Britain | NLB Singapore, *Signing of the Anglo-Dutch Treaty 1824*; Wikipedia, *Straits Settlements* |
 | Map distances | Computed great-circle distances from coordinates (MapRoute) |
+| Spice route Maluku → Melaka → Red Sea → Venice (scene 6 line) | Schematic illustration of the quote, not a surveyed route — labelled on screen "laluan rempah dilukis secara skematik". Endpoints (Maluku spices, Venice) from the Pires quote and the goods row above |
 
 Deliberately left out (not verified precisely): exact number of Zheng He's
 visits to Melaka, Zheng He's departure port, population figures.

@@ -1,12 +1,14 @@
 # 3gp
 
-**A personal AI-assisted video production lab.** Programmatic video on
-[Remotion](https://www.remotion.dev), reusable templates, style packs,
-storytelling recipes and small production tools — built so Claude Code can
-take a video from idea to export, and each video makes the next one faster.
+**A personal AI-assisted video production engine.** Programmatic video on
+[Remotion](https://www.remotion.dev): standardised production infrastructure
+(scene data, voice-first timing, transcripts, captions, music, validation,
+format variants, stills, render) under an **open visual layer** — templates
+where they are the best treatment, bespoke scenes where they are not. Built
+so Claude Code can take a video from idea to export.
 
 ```
-IDEA → BRIEF → SCRIPT → STORYBOARD → STYLE → TEMPLATES → video.json
+IDEA → BRIEF → SCRIPT → CREATIVE DIRECTION (per scene) → video.json
      → VALIDATE → REVIEW STILLS → RENDER → CAPTIONS/AUDIO → EXPORT
 ```
 
@@ -16,10 +18,17 @@ or, **voice-first** — the narration sets the timing:
 IDEA → SCRIPT → VOICE → TRANSCRIBE → transcript.json → SCENE TIMING → REMOTION → RENDER
 ```
 
-The core idea: **content data + reusable template + style pack = video.**
-A project is a `video.json` listing scenes (template + props). Changing the
-words, the format (16:9 / 9:16 / 1:1) or the whole visual style is a data
-edit — no animation code is rewritten.
+The core idea: **3gp is a production engine, not a template library.** A
+project is a `video.json` listing scenes. Each scene is drawn by a
+**template** (`"template": "MetricCard"`) or by a **custom scene** written for
+that video (`"custom": "ThroatOfVenice"`) — and both get the same timing,
+narration, captions, music, validation, variants, stills and render.
+
+Creative priority, in order: visual storytelling and final quality ›
+scene-specific direction › motion design › hierarchy and composition ›
+narration sync › reusability › existing templates. For each scene, ask
+*what is the strongest visual treatment?* — then reuse a template, compose
+primitives, extend a component, or build a custom scene.
 
 ## Quickstart
 
@@ -44,12 +53,15 @@ tools auto-detect Playwright's under `PLAYWRIGHT_BROWSERS_PATH`).
 ├── projects/                  one folder per video
 │   ├── index.ts               registry (auto-updated by `npm run new`)
 │   ├── 001-from-3gp-to-3gp/   brief.md · storyboard.md · script.md · video.json
-│   └── 002-voice-first-demo/  voice-driven timing + captions + footage
+│   ├── 002-voice-first-demo/  voice-driven timing + captions + footage
+│   └── 004-…/scenes/          bespoke scenes: schemas.ts (zod) + components + index.ts
 │                              exports/ and review/ are git-ignored
 ├── src/                       the Remotion workspace
 │   ├── Root.tsx               registers projects + template gallery
 │   ├── video/                 scene-list format (schema.ts), SceneVideo renderer,
-│   │                          transcript.ts (format), timeline.ts (seconds/voice → frames)
+│   │                          transcript.ts (format), timeline.ts (seconds/voice → frames),
+│   │                          narration.ts + scene-context.ts (useScene, useWordFrame),
+│   │                          custom-scenes.ts (defineScenes registry)
 │   ├── templates/             TitleCard, KineticText, LowerThird, QuoteCard,
 │   │                          MetricCard, BarChart, LineChart, Comparison,
 │   │                          CaptionedShort, EndCard, LogoReveal, Footage, MapRoute
@@ -57,7 +69,8 @@ tools auto-detect Playwright's under `PLAYWRIGHT_BROWSERS_PATH`).
 │   ├── components/            Stage, Reveal, WordReveal, Headline, Emphasis,
 │   │                          CountUp, HandCircle, Captions, Kicker, Media, SceneShell
 │   ├── styles/                style packs: studio, vox-editorial (tokens + STYLE.md)
-│   └── lib/                   motion tokens, resolution-independent layout, fonts
+│   └── lib/                   motion tokens, resolution-independent layout, fonts,
+│                              world.ts (Natural Earth countries), geo, labels
 ├── recipes/                   narrative structures + starter scene lists
 ├── tools/                     render/stills, new-project, validate, media,
 │                              captions/ (transcribe, transcript, SRT)
@@ -186,7 +199,45 @@ you've verified.
 - Logic: `src/video/music.ts` (unit-tested). Loudness check:
   `npm run media -- loudnorm file` normalises a finished render to −14 LUFS.
 
-## Choose a template
+## Custom scenes
+
+When a template is not the strongest treatment — a camera move across a map,
+an animated diagram, a visual metaphor, a hybrid of footage and graphics —
+write the scene for the video. It stays in the project:
+
+```
+projects/004-sejarah-perdagangan-melaka/scenes/
+  schemas.ts          export const SCENE_SCHEMAS = { ThroatOfVenice: z.object({…}) }   (pure zod)
+  ThroatOfVenice.tsx  the component (props = the schema's parsed output)
+  index.ts            export const SCENES = defineScenes(SCENE_SCHEMAS, { ThroatOfVenice })
+```
+
+Register once in `projects/index.ts` (`{ video: p004, scenes: s004 }`), then
+use it in `video.json` like any scene:
+
+```json
+{ "custom": "ThroatOfVenice", "timing": { "phrase": "Seorang pengembara" },
+  "transition": "none", "props": { "quote": "…", "emphasis": "throat of Venice" } }
+```
+
+What the scene gets from the engine:
+
+| | |
+|---|---|
+| Timing | `seconds` or any voice `timing` — identical rules to templates |
+| Narration | `useScene().words` (this scene's words, frames relative to its start) · `useWordFrame("phrase", fallback)` to land a beat on a spoken word |
+| Transitions | the style pack's cut by default; `"transition": "none"` hands entrance/exit to the scene |
+| Captions, music | the video-level overlay and ducking, `captions: false` / `musicLevel` per scene |
+| Validation | scene declared, props checked against its schema, media paths in props checked |
+| Variants, stills, render | every format of the video; stills named `scene-XX-<CustomName>.png` |
+| Primitives | `Stage`, `Reveal`, `Emphasis`, `WordReveal`/`splitWithPhrases`, `HandCircle`, `CountUp`, `Media`, `useLayout`, `useTheme`, `src/lib/world.ts` |
+
+Custom scenes stay project-local; promote one to `src/scenes/` (or a
+template) only when a second real video needs it.
+
+## Templates — tools, not constraints
+
+Use one when it is genuinely the best treatment for the scene.
 
 | Template | Use for | Key props |
 |---|---|---|
@@ -259,7 +310,7 @@ Claude's standing instructions are in [`CLAUDE.md`](CLAUDE.md).
 | `npm run music -- generate <nnn \| out.wav> [--mood calm\|bright] [--seed N] [--seconds N]` | Generate a licence-clean music bed |
 | `npm run fixtures` | Render the placeholder footage test clip → `public/fixtures/` |
 | `npm run captions:srt -- in.srt out.json` | SRT → caption JSON |
-| `npm test` | Unit tests (transcript, timing, captions, adapter) |
+| `npm test` | Unit tests (transcript, timing, captions, custom scenes, adapter) |
 | `npm run validate [-- --strict]` | Validate projects; `--strict` also fails on pending recordings |
 | `npm run check` | Lint + typecheck + tests + validate (run before committing) |
 | `npm run skills` | Install/update the official Remotion agent skills |
@@ -267,7 +318,8 @@ Claude's standing instructions are in [`CLAUDE.md`](CLAUDE.md).
 ## Outputs
 
 - Final renders: `projects/<n>/exports/<compositionId>.mp4`
-- Review stills: `projects/<n>/review/<compositionId>/scene-XX-<Template>.png`
+- Review stills: `projects/<n>/review/<compositionId>/scene-XX-<Template|CustomName>.png`
+  (`--frames a,b,c` → `frame-NNNNN-scene-XX.png`)
 - Draft previews: `….draft.mp4` / `review/<id>-draft/`
 - Ad-hoc renders: `out/`
 

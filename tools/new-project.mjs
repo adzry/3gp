@@ -101,7 +101,7 @@ fs.writeFileSync(
 
 One row per scene. Keep this in sync with video.json (same order).
 
-| # | Beat (${recipe}) | Template | Seconds | On screen | Notes |
+| # | Beat (${recipe}) | Visual treatment | Seconds | On screen | Motion / narration beat |
 |---|---|---|---|---|---|
 ${starter.scenes
   .map(
@@ -139,7 +139,7 @@ index = index.replace(
 );
 index = index.replace(
   "  // <3gp:projects>",
-  `  ${varName},\n  // <3gp:projects>`,
+  `  { video: ${varName} },\n  // <3gp:projects>`,
 );
 fs.writeFileSync(indexFile, index);
 
@@ -150,6 +150,6 @@ console.log(`✓ Created projects/${folder}/
 
 Next:
   1. Fill brief.md, then storyboard.md and script.md
-  2. Edit video.json (scenes → templates + props)
+  2. Decide each scene's visual treatment (template or custom scene), then edit video.json
   3. npm run validate && npm run stills -- ${num}
   4. npm run render -- ${num}`);

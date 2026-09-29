@@ -19,12 +19,14 @@ import {
   checkProject,
   draftPathFor,
   findProject,
+  loadSchema,
   parseArgs,
   publicPath,
   remotion,
 } from "./lib.mjs";
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
+const { sceneKind } = await loadSchema();
 const target = positional[0];
 const extra = flags._passthrough ?? [];
 if (!target) {
@@ -156,7 +158,7 @@ for (const { video, timeline } of compositions) {
         timeline.scenes[0];
       const name = flags.frames
         ? `frame-${String(f).padStart(5, "0")}-scene-${String(scene.index + 1).padStart(2, "0")}.png`
-        : `scene-${String(scene.index + 1).padStart(2, "0")}-${video.scenes[scene.index].template}.png`;
+        : `scene-${String(scene.index + 1).padStart(2, "0")}-${sceneKind(video.scenes[scene.index])}.png`;
       fs.renameSync(path.join(dir, file), path.join(dir, name));
     }
     console.log(`\n✓ review stills → ${path.relative(ROOT, dir)}/`);

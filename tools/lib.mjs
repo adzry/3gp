@@ -99,11 +99,27 @@ export const validateProject = async (file) => {
   if (result.success) return { ok: true, data: result.data, errors: [] };
   return {
     ok: false,
-    errors: result.error.issues.map(
+    errors: sceneIssues(result.error.issues, json).map(
       (i) => `${i.path.join(".") || "(root)"}: ${i.message}`,
     ),
   };
 };
+
+/**
+ * A scene is a template scene OR a custom scene; report the problems of the
+ * kind it was meant to be ("custom" key or not), not both.
+ */
+const sceneIssues = (issues, json) =>
+  issues.flatMap((issue) => {
+    if (issue.code !== "invalid_union" || issue.errors?.length !== 2)
+      return [issue];
+    const raw = issue.path.reduce((o, k) => o?.[k], json);
+    const branch = raw && typeof raw === "object" && "custom" in raw ? 1 : 0;
+    return sceneIssues(
+      issue.errors[branch].map((i) => ({ ...i, path: [...issue.path, ...i.path] })),
+      json,
+    );
+  });
 
 /**
  * Full check of a project: schema, media paths/existence, transcript validity
@@ -214,6 +230,44 @@ export const checkProject = async (file, opts = {}) => {
       }
     } catch (e) {
       out.errors.push(`${path.relative(ROOT, transcriptFile)}: ${e.message}`);
+    }
+  }
+
+  // Custom scenes: declared in projects/<n>/scenes/schemas.ts, props valid.
+  const customScenes = v.data.scenes
+    .map((s, i) => [s, i])
+    .filter(([s]) => "custom" in s);
+  if (customScenes.length) {
+    const schemasFile = path.join(path.dirname(file), "scenes", "schemas.ts");
+    const rel = path.relative(ROOT, schemasFile);
+    let schemas = null;
+    if (!fs.existsSync(schemasFile)) {
+      out.errors.push(
+        `custom scenes need ${rel} (props schemas) and scenes/index.ts (components)`,
+      );
+    } else {
+      try {
+        ({ SCENE_SCHEMAS: schemas } = await import(schemasFile));
+        if (!schemas) out.errors.push(`${rel}: must export SCENE_SCHEMAS`);
+      } catch (e) {
+        out.errors.push(`${rel}: ${e.message}`);
+      }
+    }
+    for (const [s, i] of schemas ? customScenes : []) {
+      const schema = schemas[s.custom];
+      if (!schema) {
+        out.errors.push(
+          `scenes.${i}: custom scene "${s.custom}" is not declared in ${rel} (declared: ${Object.keys(schemas).join(", ") || "none"})`,
+        );
+        continue;
+      }
+      const r = schema.safeParse(s.props ?? {});
+      if (!r.success) {
+        for (const e of r.error.issues)
+          out.errors.push(
+            `scenes.${i}.props${e.path.length ? "." + e.path.join(".") : ""} (${s.custom}): ${e.message}`,
+          );
+      }
     }
   }
 

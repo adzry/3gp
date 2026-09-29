@@ -1,5 +1,5 @@
 import { Audio } from "@remotion/media";
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import {
   AbsoluteFill,
   CalculateMetadataFunction,
@@ -14,9 +14,11 @@ import { loadFonts } from "../lib/fonts";
 import { LangProvider } from "../lib/strings";
 import { THEMES, ThemeProvider } from "../styles";
 import { TEMPLATES } from "../templates";
-import { SceneDurationContext } from "./scene-context";
+import { CustomScenesContext, type SceneRegistry } from "./custom-scenes";
+import { sceneWords } from "./narration";
+import { SceneContext } from "./scene-context";
 import { musicEnvelope } from "./music";
-import { FORMATS, type VideoProps } from "./schema";
+import { FORMATS, sceneKind, type Scene, type VideoProps } from "./schema";
 import { resolveTimelineOrThrow, type Timeline } from "./timeline";
 import { parseTranscript, transcriptToCaptions } from "./transcript";
 
@@ -45,6 +47,18 @@ export const SceneVideo: React.FC<VideoProps> = (video) => {
     () => musicEnvelope(video, timeline, transcriptData),
     [video, timeline, transcriptData],
   );
+  const registry = useContext(CustomScenesContext);
+  const resolved = useMemo(
+    () => scenes.map((scene, i) => resolveScene(scene, i, registry)),
+    [scenes, registry],
+  );
+  const narration = useMemo(
+    () =>
+      scenes.map((_, i) =>
+        sceneWords(timeline, i, transcriptData, voiceover?.offset ?? 0),
+      ),
+    [scenes, timeline, transcriptData, voiceover?.offset],
+  );
   const captionData = useMemo(
     () =>
       transcriptData
@@ -61,26 +75,32 @@ export const SceneVideo: React.FC<VideoProps> = (video) => {
         >
           {scenes.map((scene, i) => {
             const { startFrame, durationInFrames } = timeline.scenes[i];
-            const Template = TEMPLATES[scene.template] as React.FC<
-              typeof scene.props
-            >;
+            const [Component, props] = resolved[i];
             return (
               <Sequence
                 key={i}
                 from={startFrame}
                 durationInFrames={durationInFrames}
-                name={scene.name ?? `${i + 1}. ${scene.template}`}
+                name={scene.name ?? `${i + 1}. ${sceneKind(scene)}`}
               >
                 <ThemeProvider name={scene.theme ?? theme}>
-                  <SceneDurationContext.Provider value={durationInFrames}>
+                  <SceneContext.Provider
+                    value={{
+                      index: i,
+                      durationInFrames,
+                      words: narration[i],
+                      draft: transcriptData?.engine.name === "draft",
+                    }}
+                  >
                     <SceneShell
                       durationInFrames={durationInFrames}
                       isFirst={i === 0}
                       isLast={i === scenes.length - 1}
+                      transition={scene.transition ?? "theme"}
                     >
-                      <Template {...scene.props} />
+                      <Component {...props} />
                     </SceneShell>
-                  </SceneDurationContext.Provider>
+                  </SceneContext.Provider>
                 </ThemeProvider>
               </Sequence>
             );
@@ -121,6 +141,36 @@ export const SceneVideo: React.FC<VideoProps> = (video) => {
       </ThemeProvider>
     </LangProvider>
   );
+};
+
+type AnyProps = Record<string, unknown>;
+
+/** Template or custom scene → the component that draws it + its props. */
+const resolveScene = (
+  scene: Scene,
+  i: number,
+  registry: SceneRegistry,
+): [React.FC<AnyProps>, AnyProps] => {
+  if (!("custom" in scene)) {
+    return [
+      TEMPLATES[scene.template] as React.FC<AnyProps>,
+      scene.props as AnyProps,
+    ];
+  }
+  const Component = registry.components[scene.custom];
+  const schema = registry.schemas[scene.custom];
+  if (!Component || !schema) {
+    throw new Error(
+      `scenes.${i}: custom scene "${scene.custom}" is not registered — add it to the project's scenes/schemas.ts and scenes/index.ts`,
+    );
+  }
+  const parsed = schema.safeParse(scene.props ?? {});
+  if (!parsed.success) {
+    throw new Error(
+      `scenes.${i} (${scene.custom}): ${parsed.error.issues.map((e) => `${e.path.join(".") || "props"}: ${e.message}`).join("; ")}`,
+    );
+  }
+  return [Component as React.FC<AnyProps>, parsed.data as AnyProps];
 };
 
 /** Hides the caption overlay during scenes with `captions: false`. */

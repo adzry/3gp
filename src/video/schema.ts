@@ -36,28 +36,35 @@ export const sceneTimingSchema = z.union([
 
 export type SceneTiming = z.infer<typeof sceneTimingSchema>;
 
+/** Fields every scene has, whatever draws it. */
+const sceneBase = {
+  /** Scene length in seconds (use this OR `timing`). */
+  seconds: z.number().positive().optional(),
+  /** Voice-driven timing (use this OR `seconds`). */
+  timing: sceneTimingSchema.optional(),
+  /** Show the video-level captions during this scene (default true). */
+  captions: z.boolean().optional(),
+  /** Music level multiplier for this scene (e.g. 0.5 under key text). */
+  musicLevel: z.number().min(0).max(1).optional(),
+  /** Label shown in Studio's timeline. */
+  name: z.string().optional(),
+  /** Override the video's theme for this scene only. */
+  theme: zThemeName.optional(),
+  /**
+   * "theme" (default): the style pack's cut (fade / sheet wipe).
+   * "none": hard cut — the scene animates its own entrance and exit.
+   */
+  // Not a CSS transition (the lint rule only sees the name).
+  // eslint-disable-next-line @remotion/non-pure-animation
+  transition: z.enum(["theme", "none"]).optional(),
+};
+
 const scene = <Name extends string, P extends z.ZodType>(
   template: Name,
   props: P,
-) =>
-  z.object({
-    template: z.literal(template),
-    /** Scene length in seconds (use this OR `timing`). */
-    seconds: z.number().positive().optional(),
-    /** Voice-driven timing (use this OR `seconds`). */
-    timing: sceneTimingSchema.optional(),
-    /** Show the video-level captions during this scene (default true). */
-    captions: z.boolean().optional(),
-    /** Music level multiplier for this scene (e.g. 0.5 under key text). */
-    musicLevel: z.number().min(0).max(1).optional(),
-    /** Label shown in Studio's timeline. */
-    name: z.string().optional(),
-    /** Override the video's theme for this scene only. */
-    theme: zThemeName.optional(),
-    props,
-  });
+) => z.object({ template: z.literal(template), ...sceneBase, props });
 
-export const sceneSchema = z.discriminatedUnion("template", [
+export const templateSceneSchema = z.discriminatedUnion("template", [
   scene("TitleCard", T.titleCardSchema),
   scene("KineticText", T.kineticTextSchema),
   scene("LowerThird", T.lowerThirdSchema),
@@ -73,8 +80,29 @@ export const sceneSchema = z.discriminatedUnion("template", [
   scene("MapRoute", T.mapRouteSchema),
 ]);
 
+/**
+ * A bespoke scene: a component written for this project, declared in
+ * projects/<n>/scenes/schemas.ts (props schema) and scenes/index.ts
+ * (component). Same timing, captions, music and variants as any template.
+ */
+export const customSceneSchema = z.strictObject({
+  custom: z
+    .string()
+    .regex(/^[A-Z][A-Za-z0-9]*$/, "PascalCase component name, e.g. StraitChokepoint"),
+  ...sceneBase,
+  /** Checked against the scene's own schema by `npm run validate` and at render. */
+  props: z.record(z.string(), z.unknown()).default({}),
+});
+
+export const sceneSchema = z.union([templateSceneSchema, customSceneSchema]);
+
 export type Scene = z.input<typeof sceneSchema>;
-export type TemplateName = Scene["template"];
+export type TemplateScene = z.input<typeof templateSceneSchema>;
+export type CustomScene = z.input<typeof customSceneSchema>;
+export type TemplateName = TemplateScene["template"];
+
+/** "TitleCard", "StraitChokepoint", … — what draws the scene. */
+export const sceneKind = (s: Scene) => ("custom" in s ? s.custom : s.template);
 
 export const FORMATS = {
   landscape: { width: 1920, height: 1080 },

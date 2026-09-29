@@ -71,13 +71,16 @@
     },
     {
       "name": "Tomé Pires",
-      "template": "QuoteCard",
-      "seconds": 6,
+      "custom": "ThroatOfVenice",
+      "seconds": 7.5,
+      "transition": "none",
       "props": {
+        "kicker": "Tomé Pires, c. 1512–1515",
         "quote": "Whoever is lord of Malacca has his hand on the throat of Venice.",
-        "author": "Tomé Pires",
-        "source": "Suma Oriental, c. 1512–1515",
-        "emphasis": ["throat of Venice"]
+        "emphasis": "throat of Venice",
+        "attribution": "— Suma Oriental, terj. Armando Cortesão",
+        "labels": { "strait": "Selat Melaka", "melaka": "Melaka", "venice": "Venice", "maluku": "Maluku" },
+        "source": "Suma Oriental (terj. Cortesão) · laluan rempah dilukis secara skematik · peta Natural Earth"
       }
     },
     {
@@ -120,6 +123,7 @@
     }
   ],
   "variants": [
-    { "id": "p004-sejarah-perdagangan-melaka-vertical", "format": "vertical" }
+    { "id": "p004-sejarah-perdagangan-melaka-vertical", "format": "vertical" },
+    { "id": "p004-sejarah-perdagangan-melaka-square", "format": "square" }
   ]
 }

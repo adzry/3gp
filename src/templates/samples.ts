@@ -1,4 +1,4 @@
-import type { Scene } from "../video/schema";
+import type { TemplateScene } from "../video/schema";
 
 /** Timed words for the captions sample: [word, startMs, endMs]. */
 const words: [string, number, number][] = [
@@ -19,7 +19,7 @@ const words: [string, number, number][] = [
  * One example scene per template. These drive the Studio gallery
  * (Templates folder) and double as copy-paste examples for video.json.
  */
-export const SAMPLES: Scene[] = [
+export const SAMPLES: TemplateScene[] = [
   {
     template: "TitleCard",
     seconds: 4,
