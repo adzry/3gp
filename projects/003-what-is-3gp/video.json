@@ -5,6 +5,12 @@
   "fps": 30,
   "format": "landscape",
   "theme": "studio",
+  "audio": {
+    "src": "projects/003-what-is-3gp/music.generated.wav",
+    "volume": 0.6,
+    "fadeIn": 1.5,
+    "fadeOut": 3
+  },
   "scenes": [
     {
       "name": "Hook",

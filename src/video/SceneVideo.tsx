@@ -14,6 +14,7 @@ import { loadFonts } from "../lib/fonts";
 import { THEMES, ThemeProvider } from "../styles";
 import { TEMPLATES } from "../templates";
 import { SceneDurationContext } from "./scene-context";
+import { musicEnvelope } from "./music";
 import { FORMATS, type VideoProps } from "./schema";
 import { resolveTimelineOrThrow, type Timeline } from "./timeline";
 import { parseTranscript, transcriptToCaptions } from "./transcript";
@@ -38,6 +39,10 @@ export const SceneVideo: React.FC<VideoProps> = (video) => {
   const timeline = useMemo(
     () => resolveTimelineOrThrow(video, transcriptData),
     [video, transcriptData],
+  );
+  const musicVolume = useMemo(
+    () => musicEnvelope(video, timeline, transcriptData),
+    [video, timeline, transcriptData],
   );
   const captionData = useMemo(
     () =>
@@ -90,7 +95,13 @@ export const SceneVideo: React.FC<VideoProps> = (video) => {
           </SceneCaptionsGate>
         ) : null}
         {audio ? (
-          <Audio src={resolveSrc(audio.src)} volume={() => audio.volume ?? 1} />
+          <Audio
+            src={resolveSrc(audio.src)}
+            name="Music"
+            loop={audio.loop ?? true}
+            trimBefore={Math.round((audio.trimStart ?? 0) * timeline.fps)}
+            volume={(f) => musicVolume(f)}
+          />
         ) : null}
         {voiceover && !voiceover.mute ? (
           <Sequence

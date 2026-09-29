@@ -117,6 +117,12 @@ export const checkProject = async (file, opts = {}) => {
     if (problem) out.errors.push(problem);
     else if (!isRemote(ref.path) && !fs.existsSync(publicPath(ref.path))) {
       if (vo && (ref.path === vo.src || ref.path === vo.transcript)) continue; // handled below
+      if (/\.generated\.wav$/.test(ref.path)) {
+        out.pending.push(
+          `${ref.where}: generated music missing — run \`npm run music -- generate ${path.basename(path.dirname(file))}\``,
+        );
+        continue;
+      }
       if (ref.path.startsWith("fixtures/")) {
         out.pending.push(
           `${ref.where}: generated fixture missing — run \`npm run fixtures\``,
@@ -242,6 +248,9 @@ const VALUE_FLAGS = new Set([
   "language",
   "from-json",
   "out",
+  "mood",
+  "seconds",
+  "seed",
 ]);
 
 export const parseArgs = (argv) => {

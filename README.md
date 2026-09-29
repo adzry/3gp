@@ -160,6 +160,32 @@ stale transcripts, and missing/unsupported media. Captions come from the
 transcript, one highlighted word at a time; set `"captions": false` on scenes
 that already show the words. Details: [`tools/captions/README.md`](tools/captions/README.md).
 
+## Background music
+
+```bash
+npm run music -- generate 003 --mood calm     # or bright; --seed N for a variation
+```
+
+writes `public/projects/003-…/music.generated.wav` — a licence-clean bed
+(pad, bass, arpeggio) synthesised by 3gp itself, exactly as long as the video
+(rounded to whole bars so it loops cleanly). Deterministic, so it isn't
+committed: re-run the command to recreate it. Or use any track whose licence
+you've verified.
+
+```json
+"audio": { "src": "projects/003-what-is-3gp/music.generated.wav",
+           "volume": 0.6, "fadeIn": 1.5, "fadeOut": 3,
+           "loop": true, "trimStart": 0, "duckUnderVoice": 0.35 }
+```
+
+- **Fades** at the start/end of the video; **loops** if the track is short.
+- **Ducking:** with a voice-over, music drops to `duckUnderVoice` × volume
+  while the narrator speaks (from the transcript), gliding in/out over 0.3 s
+  and bridging pauses < 0.6 s so it doesn't pump.
+- **Per-scene level:** `"musicLevel": 0.5` on a scene lowers the music there.
+- Logic: `src/video/music.ts` (unit-tested). Loudness check:
+  `npm run media -- loudnorm file` normalises a finished render to −14 LUFS.
+
 ## Choose a template
 
 | Template | Use for | Key props |
@@ -224,6 +250,7 @@ Claude's standing instructions are in [`CLAUDE.md`](CLAUDE.md).
 | `npm run transcribe -- <nnn \| file> [--model m] [--language l] [--force]` | Local whisper.cpp → transcript JSON (word timestamps) |
 | `npm run transcript -- <nnn> [--draft]` · `npm run transcript -- draft <nnn>` | List words/scene timing · draft transcript from script |
 | `npm run stills\|render -- <nnn> --draft` | Voice-first preview on the draft transcript |
+| `npm run music -- generate <nnn \| out.wav> [--mood calm\|bright] [--seed N] [--seconds N]` | Generate a licence-clean music bed |
 | `npm run fixtures` | Render the placeholder footage test clip → `public/fixtures/` |
 | `npm run captions:srt -- in.srt out.json` | SRT → caption JSON |
 | `npm test` | Unit tests (transcript, timing, captions, adapter) |

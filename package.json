@@ -14,6 +14,7 @@
     "stills": "node tools/render.mjs --stills",
     "captions:srt": "node tools/captions/srt-to-json.mjs",
     "media": "node tools/media/media.mjs",
+    "music": "node tools/audio/music.mjs",
     "transcribe": "node tools/captions/transcribe.mjs",
     "transcript": "node tools/captions/transcript.mjs",
     "fixtures": "node tools/render.mjs fixture-footage --out public/fixtures/placeholder-footage.mp4",

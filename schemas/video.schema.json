@@ -43,6 +43,31 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1
+        },
+        "fadeIn": {
+          "default": 1,
+          "type": "number",
+          "minimum": 0
+        },
+        "fadeOut": {
+          "default": 2,
+          "type": "number",
+          "minimum": 0
+        },
+        "loop": {
+          "default": true,
+          "type": "boolean"
+        },
+        "trimStart": {
+          "default": 0,
+          "type": "number",
+          "minimum": 0
+        },
+        "duckUnderVoice": {
+          "default": 0.35,
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
         }
       },
       "required": [
@@ -223,6 +248,11 @@
               "captions": {
                 "type": "boolean"
               },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
               "name": {
                 "type": "string"
               },
@@ -380,6 +410,11 @@
               "captions": {
                 "type": "boolean"
               },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
               "name": {
                 "type": "string"
               },
@@ -531,6 +566,11 @@
               "captions": {
                 "type": "boolean"
               },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
               "name": {
                 "type": "string"
               },
@@ -678,6 +718,11 @@
               },
               "captions": {
                 "type": "boolean"
+              },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "name": {
                 "type": "string"
@@ -827,6 +872,11 @@
               },
               "captions": {
                 "type": "boolean"
+              },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "name": {
                 "type": "string"
@@ -991,6 +1041,11 @@
               },
               "captions": {
                 "type": "boolean"
+              },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "name": {
                 "type": "string"
@@ -1161,6 +1216,11 @@
               },
               "captions": {
                 "type": "boolean"
+              },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "name": {
                 "type": "string"
@@ -1339,6 +1399,11 @@
               "captions": {
                 "type": "boolean"
               },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
               "name": {
                 "type": "string"
               },
@@ -1478,6 +1543,11 @@
               },
               "captions": {
                 "type": "boolean"
+              },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "name": {
                 "type": "string"
@@ -1723,6 +1793,11 @@
               "captions": {
                 "type": "boolean"
               },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
               "name": {
                 "type": "string"
               },
@@ -1897,6 +1972,11 @@
               },
               "captions": {
                 "type": "boolean"
+              },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "name": {
                 "type": "string"
@@ -2095,6 +2175,11 @@
               },
               "captions": {
                 "type": "boolean"
+              },
+              "musicLevel": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "name": {
                 "type": "string"

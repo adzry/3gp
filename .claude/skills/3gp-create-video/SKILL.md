@@ -108,8 +108,11 @@ asset's source + license in `brief.md`. Rendered media is git-ignored.
 - Voice-over captions: top-level `captions` (from the transcript) — see above.
 - SRT only: `npm run captions:srt -- in.srt public/projects/<n>/captions.json`
   → `CaptionedShort.captionsFile` (cue-level, not word-level).
-- Music bed: top-level `audio: { src, volume }` — only tracks with a verified
-  licence (`research/licensing.md`). Keep it under the voice (volume ~0.15–0.3).
+- Music bed: top-level `audio: { src, volume, fadeIn, fadeOut, loop, duckUnderVoice }`.
+  No licensed track? `npm run music -- generate <nnn> [--mood calm|bright]`
+  (3gp's own synth, licence-clean). With a voice-over, keep `volume` ~0.25–0.4;
+  it ducks automatically while the narrator speaks. `musicLevel` on a scene
+  lowers it there. Only use outside tracks with a verified licence.
 
 ## When the templates are not enough
 

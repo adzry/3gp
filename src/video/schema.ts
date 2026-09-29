@@ -47,6 +47,8 @@ const scene = <Name extends string, P extends z.ZodType>(
     timing: sceneTimingSchema.optional(),
     /** Show the video-level captions during this scene (default true). */
     captions: z.boolean().optional(),
+    /** Music level multiplier for this scene (e.g. 0.5 under key text). */
+    musicLevel: z.number().min(0).max(1).optional(),
     /** Label shown in Studio's timeline. */
     name: z.string().optional(),
     /** Override the video's theme for this scene only. */
@@ -91,9 +93,22 @@ export const videoSchema = z.object({
   fps: z.number().int().positive().default(30),
   format: z.enum(["landscape", "vertical", "square"]).default("landscape"),
   theme: zThemeName.default("studio"),
-  /** Music bed (or any single audio track) for the whole video (path in public/). */
+  /** Music bed for the whole video (path in public/). See src/video/music.ts. */
   audio: z
-    .object({ src: z.string(), volume: z.number().min(0).max(1).default(1) })
+    .object({
+      src: z.string(),
+      /** Overall level (0–1). Music under narration usually sits at 0.2–0.4. */
+      volume: z.number().min(0).max(1).default(1),
+      /** Seconds to fade in at the start / out at the end of the video. */
+      fadeIn: z.number().min(0).default(1),
+      fadeOut: z.number().min(0).default(2),
+      /** Repeat the track if it is shorter than the video. */
+      loop: z.boolean().default(true),
+      /** Seconds to skip at the start of the track. */
+      trimStart: z.number().min(0).default(0),
+      /** Level multiplier while the narration is speaking (1 = no ducking). */
+      duckUnderVoice: z.number().min(0).max(1).default(0.35),
+    })
     .optional(),
   /** Recorded narration + its transcript. Enables `timing` and `captions`. */
   voiceover: z

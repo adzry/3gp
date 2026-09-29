@@ -10,6 +10,9 @@ projects/*/review/
 # Generated test fixtures (npm run fixtures)
 public/fixtures/
 
+# Generated music beds (npm run music -- generate <n>) — reproducible
+*.generated.wav
+
 # Local tool downloads (whisper.cpp builds, models, etc.)
 .cache/
 whisper.cpp/
