@@ -71,6 +71,38 @@ export const LineChart: React.FC<z.input<typeof lineChartSchema>> = ({
     hl === null ||
     (data[hl + 1]?.value ?? data[hl].value) >=
       (data[hl - 1]?.value ?? data[hl].value);
+  // …but never push the note off the chart: flip sides if it doesn't fit.
+  const noteW = annotation ? annotation.length * u(26) : 0;
+  const fitsRight = hl !== null && x(hl) + u(44) + noteW <= W;
+  const fitsLeft = hl !== null && x(hl) - u(44) - noteW >= 0;
+  const noteRight = !fitsRight ? false : !fitsLeft ? true : rising;
+  // Keep the note clear of the line: find the lowest point of the line across
+  // the note's horizontal span and sit below it (approximate text width).
+  const lineYAt = (px: number) => {
+    const t = ((px - padX) / (W - padX * 2)) * (data.length - 1);
+    const i = Math.max(0, Math.min(data.length - 2, Math.floor(t)));
+    const f = Math.max(0, Math.min(1, t - i));
+    return y(data[i].value) + (y(data[i + 1].value) - y(data[i].value)) * f;
+  };
+  let noteY = 0;
+  if (hl !== null && annotation) {
+    const w = noteW;
+    const x0 = noteRight ? x(hl) + u(44) : x(hl) - u(44) - w;
+    let lowest = y(data[hl].value);
+    for (let k = 0; k <= 8; k++)
+      lowest = Math.max(lowest, lineYAt(x0 + (w * k) / 8));
+    const below = Math.max(y(data[hl].value) + u(78), lowest + u(62));
+    if (below <= H - padBottom - u(8)) {
+      noteY = below;
+    } else {
+      // No room under the line: go above it, over the value label. The line
+      // is lower on this side, so the space above is clear.
+      let highest = y(data[hl].value);
+      for (let k = 0; k <= 8; k++)
+        highest = Math.min(highest, lineYAt(x0 + (w * k) / 8));
+      noteY = Math.min(y(data[hl].value) - u(96), highest - u(24));
+    }
+  }
 
   // Highlight ring draws after the line passes it, at the theme's stroke fps.
   const ringStart =
@@ -159,7 +191,8 @@ export const LineChart: React.FC<z.input<typeof lineChartSchema>> = ({
               {isLast || isHl ? (
                 <text
                   x={isLast ? x(i) : x(i) + (rising ? -u(30) : u(30))}
-                  y={y(d.value) - u(isLast ? 26 : 30)}
+                  // A highlighted last point sits above its ring (r = 34).
+                  y={y(d.value) - u(isLast ? (isHl ? 50 : 26) : 30)}
                   textAnchor={isLast || rising ? "end" : "start"}
                   opacity={isLast ? endLabel : 1}
                   style={{
@@ -192,9 +225,9 @@ export const LineChart: React.FC<z.input<typeof lineChartSchema>> = ({
             />
             {annotation ? (
               <text
-                x={x(hl) + (rising ? u(44) : -u(44))}
-                y={y(data[hl].value) + u(78)}
-                textAnchor={rising ? "start" : "end"}
+                x={x(hl) + (noteRight ? u(44) : -u(44))}
+                y={noteY}
+                textAnchor={noteRight ? "start" : "end"}
                 opacity={ring}
                 style={{
                   fontFamily: theme.fonts.hand,

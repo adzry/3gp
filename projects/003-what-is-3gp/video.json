@@ -1,0 +1,149 @@
+{
+  "$schema": "../../schemas/video.schema.json",
+  "id": "p003-what-is-3gp",
+  "title": "What is 3gp",
+  "fps": 30,
+  "format": "landscape",
+  "theme": "studio",
+  "scenes": [
+    {
+      "name": "Hook",
+      "template": "TitleCard",
+      "seconds": 4,
+      "props": {
+        "kicker": "3gp",
+        "title": "A video lab that gets faster with every video",
+        "emphasis": [
+          "faster"
+        ]
+      }
+    },
+    {
+      "name": "Problem",
+      "template": "KineticText",
+      "seconds": 4.5,
+      "props": {
+        "lines": [
+          "Every video starts from zero.",
+          "Same animations, rebuilt again."
+        ],
+        "emphasis": [
+          "zero"
+        ]
+      }
+    },
+    {
+      "name": "Before / after",
+      "template": "Comparison",
+      "seconds": 6,
+      "props": {
+        "left": {
+          "label": "Without 3gp",
+          "title": "By hand",
+          "points": [
+            "Animate every scene again",
+            "Re-time after every edit",
+            "Copy the style by eye"
+          ]
+        },
+        "right": {
+          "label": "With 3gp",
+          "title": "From data",
+          "points": [
+            "Reusable templates",
+            "Timing computed for you",
+            "Style packs switch the look"
+          ]
+        },
+        "winner": "right"
+      }
+    },
+    {
+      "name": "How it works",
+      "template": "KineticText",
+      "seconds": 6,
+      "props": {
+        "lines": [
+          "Content is data.",
+          "Templates do the motion.",
+          "Styles set the look."
+        ],
+        "emphasis": [
+          "data"
+        ]
+      }
+    },
+    {
+      "name": "Evidence",
+      "template": "MetricCard",
+      "seconds": 4.5,
+      "props": {
+        "label": "Reusable templates today",
+        "value": 12,
+        "context": "Titles, text, charts, comparisons, footage, captions and end cards.",
+        "annotate": true,
+        "source": "src/templates in the 3gp repo"
+      }
+    },
+    {
+      "name": "Growth",
+      "template": "LineChart",
+      "seconds": 5.5,
+      "props": {
+        "title": "Templates in 3gp, commit by commit",
+        "data": [
+          {
+            "label": "Setup",
+            "value": 8
+          },
+          {
+            "label": "Voice-first",
+            "value": 9
+          },
+          {
+            "label": "Today",
+            "value": 12
+          }
+        ],
+        "highlight": 2,
+        "annotation": "+3 today",
+        "source": "3gp git history"
+      }
+    },
+    {
+      "name": "Payoff",
+      "template": "TitleCard",
+      "seconds": 4.5,
+      "props": {
+        "kicker": "The idea",
+        "title": "Every video leaves something the next one can reuse",
+        "emphasis": [
+          "reuse"
+        ]
+      }
+    },
+    {
+      "name": "CTA",
+      "template": "EndCard",
+      "seconds": 4.5,
+      "props": {
+        "headline": "Idea → 3gp → Claude → video",
+        "subline": "github.com/adzry/3gp",
+        "credits": [
+          "Fonts: Inter, Archivo Black, Caveat, JetBrains Mono — SIL OFL 1.1",
+          "Built with Remotion"
+        ]
+      }
+    }
+  ],
+  "variants": [
+    {
+      "id": "p003-what-is-3gp-vertical",
+      "format": "vertical"
+    },
+    {
+      "id": "p003-what-is-3gp-vox",
+      "theme": "vox-editorial"
+    }
+  ]
+}
